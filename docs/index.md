@@ -1,16 +1,14 @@
-# Introduction to Quantum Exact Simulation with Intel® FPGA
-
-![](https://epicure-hpc.eu/wp-content/uploads/2024/05/Logo_Verde_Preto.svg#373)
+# ![](https://epicure-hpc.eu/wp-content/uploads/2024/05/Logo_Verde_Preto.svg#373)
 
 ![](https://epicure-hpc.eu/wp-content/uploads/2024/10/BG_Shape_Intro_V2.svg#684)
 
-This course is a live workout session provided in the context of the [EPICURE](https://epicure-hpc.eu/) project, participants will explore how to program High-Performance FPGA cards using the Intel DPC++ compiler, a SYCL implementation, to facilitate heterogeneous device programming. 
+This course is a live workout session provided in the context of the [EPICURE](https://epicure-hpc.eu/) project, participants will explore how to program High-Performance FPGA cards using the Intel DPC++ compiler, a [SYCL implementation](https://www.khronos.org/sycl/), to facilitate heterogeneous device programming. 
 
 Field-Programmable Gate Arrays (FPGAs) are integrated circuits that can be configured by users post-manufacturing. They consist of a network of programmable logic blocks and reconfigurable interconnects, enabling the creation of custom digital circuits. Traditionally, FPGAs have been programmed using Hardware Description Languages (HDLs) such as Verilog and VHDL. However, designing high-performance accelerators with these languages demands extensive knowledge and experience in hardware design. 
 
 By leveraging higher-level abstractions like SYCL and OpenCL—C/C++-based programming models familiar to software developers—developers can generate hardware kernels through an offline compiler. This significantly simplifies FPGA programming, reducing development time compared to HDL, which typically involves more complex coding, simulation, and debugging processes. 
 
-Following an introduction to Meluxina’s FPGA cards and an overview of SYCL programming using the OneAPI software development toolkit, participants will engage in a live demonstration led by the presenter. This demonstration will feature the coding of a brief example: “How to code quantum circuits on FPGA”. 
+Following an introduction to Meluxina’s FPGA cards and an overview of SYCL programming using the [OneAPI software development toolkit](https://www.intel.com/content/www/us/en/developer/tools/oneapi/overview.html), participants will engage in a live demonstration led by the presenter. This demonstration will feature the coding of a brief example: “How to code quantum circuits on FPGA”. 
 
 **<u>Type</u>**: Live workout session 
 
@@ -49,7 +47,7 @@ In this course, you will learn to:
 
 ## Who is the course for ?
 
-- This course is for students, researchers, enginners wishing to discover how to use oneAPI to program FPGA in this fantastic fields which is **Quantum Computing**. 
+- This course is for students, researchers, enginners wishing to discover how to use oneAPI to program FPGA. 
 
 - Participants should still have some experience with Python & modern C++ (e.g., [Lambdas](https://en.cppreference.com/w/cpp/language/lambda), [class deduction templates](https://en.cppreference.com/w/cpp/language/class_template_argument_deduction)).
 
