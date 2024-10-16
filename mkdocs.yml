@@ -6,6 +6,7 @@ nav:
     - SYCL & the Intel® DPC++ compiler: 'dpcpp.md'
     - Compiling SYCL programs: 'compile.md'
     - Developing SYCL programs: 'writing.md'
+    - Optimizing SYCL programs: 'optimization.md'
   - SYCL Quantum Circuits using the DPC++ compiler: 
     - Developing Quantum Circuit: 'oneapi_quantum.md'
     - Creating a Quantum toolbox: 'oneapi_toolbox.md'
