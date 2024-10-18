@@ -2,7 +2,7 @@ pages:
   stage: deploy
   image: python:3.11.3
   script:
-    - pip install mkdocs-material
+    - pip install -r requirements.txt
     - mkdocs build --site-dir public
   artifacts:
     paths:
