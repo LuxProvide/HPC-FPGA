@@ -183,6 +183,49 @@ FPGA Development Boards and HPC (High-Performance Computing) FPGA Cards serve di
 !!! warning "Vectorization"
     Vectorization is not the main source of parallelism but help designing efficient pipeline. Since hardware can be reconfigured at will. The offline compiler can design N-bits Adders, multipliers which simplify greatly vectorization. In fact, the offline compiler vectorizes your design automatically if possible.
 
+
+## Pipelining for FPGA
+
+!!! abstract "Pipelining (see FPGA Optimization Guide for Intel® oneAPI Toolkits)"
+    * Pipelining is a design technique used in synchronous digital circuits to increase maximum frequency (fMAX).
+    * This technique involves adding registers to the critical path, reducing the amount of logic between each register.
+    * Reducing logic between registers decreases execution time, enabling an increase in fMAX.
+    * **The critical path** is the path between two consecutive registers that has the highest latency, meaning it’s where operations take the longest to complete.
+    * Pipelining is especially effective for processing a stream of data.
+    * In a pipelined circuit, different stages can process different data inputs within the same clock cycle.
+    * This design improves data processing throughput.
+
+    ![](./images/pipeline.png)
+
+!!! abstract "Maximum Frequency (fMAX)"
+    * The **fMAX** of a digital circuit is its highest possible clock frequency, determining the maximum rate for updating register outputs. 
+    * This speed is constrained by the physical propagation delay of the signal across the combinational logic between consecutive register stages.
+    * The delay is affected by the complexity of the combinational logic in the path, and the path with the greatest number of logic elements and highest delay sets the speed limit for the entire circuit, often known as the **critical path**. 
+    * The fMAX is the reciprocal of this critical path delay, and having a high fMAX is desirable as it leads to better performance when there are no other restrictions.
+    ![](./images/fmax.png)
+
+!!! abstract "Throughput"
+    * The **Throughput** in a digital circuit refers to the speed at which data is handled.
+    * When there are no other limiting factors, a higher fMAX leads to increased throughput, such as more samples per second.
+    * Often synonymous with performance, throughput is frequently used to gauge the effectiveness of a circuit.
+    ![](./images/throughput.png)
+
+!!! abstract "Latency"
+    * The **Latency** measures the duration to complete operations in a digital circuit, and it can be assessed for individual tasks or the whole circuit.
+    * It can be measured in time units like microseconds or clock cycles, with the latter often preferred. i
+    * Measuring latency in clock cycles separates it from the circuit's clock frequency, making it easier to understand the real effects of modifications on the circuit's performance.
+    ![](./images/latency.png)
+
+!!! abstract "Occupancy"
+    * The **occupancy** of a datapath at a specific moment signifies the fraction of the datapath filled with valid data.i
+    * When looking at a circuit's execution of a program, the occupancy is the mean value from the beginning to the end of the program's run.
+    * Parts of the datapath that are unoccupied are commonly called bubbles, akin to a CPU's no-operation (no-ops) instructions, which don't influence the final output.
+    * Minimizing these bubbles leads to greater occupancy. If there are no other hindrances, optimizing the occupancy of the datapath will boost throughput.
+    <figure markdown>
+        ![](./images/occupancy.png)
+       <figcaption>Occupancy: 2/5=40%</figcaption>
+    </figure>
+
 ### Pipelining with ND-range kernels
 
 * ND-range kernels are based on a hierachical grouping of work-items

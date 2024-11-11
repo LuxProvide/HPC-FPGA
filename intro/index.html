@@ -403,6 +403,21 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipelining-for-fpga" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipelining for FPGA
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pipelining for FPGA">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#pipelining-with-nd-range-kernels" class="md-nav__link">
     <span class="md-ellipsis">
@@ -798,6 +813,21 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipelining-for-fpga" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipelining for FPGA
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pipelining for FPGA">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#pipelining-with-nd-range-kernels" class="md-nav__link">
     <span class="md-ellipsis">
@@ -1086,6 +1116,61 @@ An FPGA (Field-Programmable Gate Array) is an integrated circuit designed to be 
 <div class="admonition warning">
 <p class="admonition-title">Vectorization</p>
 <p>Vectorization is not the main source of parallelism but help designing efficient pipeline. Since hardware can be reconfigured at will. The offline compiler can design N-bits Adders, multipliers which simplify greatly vectorization. In fact, the offline compiler vectorizes your design automatically if possible.</p>
+</div>
+<h2 id="pipelining-for-fpga">Pipelining for FPGA<a class="headerlink" href="#pipelining-for-fpga" title="Permanent link">&para;</a></h2>
+<div class="admonition abstract">
+<p class="admonition-title">Pipelining (see FPGA Optimization Guide for Intel® oneAPI Toolkits)</p>
+<ul>
+<li>Pipelining is a design technique used in synchronous digital circuits to increase maximum frequency (fMAX).</li>
+<li>This technique involves adding registers to the critical path, reducing the amount of logic between each register.</li>
+<li>Reducing logic between registers decreases execution time, enabling an increase in fMAX.</li>
+<li><strong>The critical path</strong> is the path between two consecutive registers that has the highest latency, meaning it’s where operations take the longest to complete.</li>
+<li>Pipelining is especially effective for processing a stream of data.</li>
+<li>In a pipelined circuit, different stages can process different data inputs within the same clock cycle.</li>
+<li>This design improves data processing throughput.</li>
+</ul>
+<p><img alt="" src="../images/pipeline.png" /></p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Maximum Frequency (fMAX)</p>
+<ul>
+<li>The <strong>fMAX</strong> of a digital circuit is its highest possible clock frequency, determining the maximum rate for updating register outputs. </li>
+<li>This speed is constrained by the physical propagation delay of the signal across the combinational logic between consecutive register stages.</li>
+<li>The delay is affected by the complexity of the combinational logic in the path, and the path with the greatest number of logic elements and highest delay sets the speed limit for the entire circuit, often known as the <strong>critical path</strong>. </li>
+<li>The fMAX is the reciprocal of this critical path delay, and having a high fMAX is desirable as it leads to better performance when there are no other restrictions.
+<img alt="" src="../images/fmax.png" /></li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Throughput</p>
+<ul>
+<li>The <strong>Throughput</strong> in a digital circuit refers to the speed at which data is handled.</li>
+<li>When there are no other limiting factors, a higher fMAX leads to increased throughput, such as more samples per second.</li>
+<li>Often synonymous with performance, throughput is frequently used to gauge the effectiveness of a circuit.
+<img alt="" src="../images/throughput.png" /></li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Latency</p>
+<ul>
+<li>The <strong>Latency</strong> measures the duration to complete operations in a digital circuit, and it can be assessed for individual tasks or the whole circuit.</li>
+<li>It can be measured in time units like microseconds or clock cycles, with the latter often preferred. i</li>
+<li>Measuring latency in clock cycles separates it from the circuit's clock frequency, making it easier to understand the real effects of modifications on the circuit's performance.
+<img alt="" src="../images/latency.png" /></li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Occupancy</p>
+<ul>
+<li>The <strong>occupancy</strong> of a datapath at a specific moment signifies the fraction of the datapath filled with valid data.i</li>
+<li>When looking at a circuit's execution of a program, the occupancy is the mean value from the beginning to the end of the program's run.</li>
+<li>Parts of the datapath that are unoccupied are commonly called bubbles, akin to a CPU's no-operation (no-ops) instructions, which don't influence the final output.</li>
+<li>Minimizing these bubbles leads to greater occupancy. If there are no other hindrances, optimizing the occupancy of the datapath will boost throughput.
+<figure markdown>
+    <img alt="" src="../images/occupancy.png" />
+   <figcaption>Occupancy: &#8534;=40%</figcaption>
+</figure></li>
+</ul>
 </div>
 <h3 id="pipelining-with-nd-range-kernels">Pipelining with ND-range kernels<a class="headerlink" href="#pipelining-with-nd-range-kernels" title="Permanent link">&para;</a></h3>
 <ul>

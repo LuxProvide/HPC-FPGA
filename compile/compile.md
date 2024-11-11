@@ -243,6 +243,20 @@ Before targeting a specific hardware accelerator, you need to ensure that the SY
 
 * **lines 99-105** catch SYCL exceptions and terminate the execution
 
+## Code synthesis
+
+<figure markdown>
+<figcaption><small><b>Left</b>: Synthesis time (source: wikis.uni-paderborn.de) -- <b>Right</b>: Development workflow</small></figcaption>
+![](./images/synth_time.png){ width=450 align=left }
+![](./images/devflow.png){ width=240 align=right } 
+</figure>
+
+
+* Hardware synthesis can be very long 
+
+* Emulation is a practical way of testing your kernels
+
+
 ### Emulation
 
 * FPGA emulation refers to the process of using a software or hardware system to mimic the behaviour of an FPGA device. This is usually done to test, validate, and debug FPGA designs before deploying them on actual hardware. The Intel® FPGA emulator runs the code on the host cpu.
