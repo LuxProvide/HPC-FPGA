@@ -13,7 +13,7 @@
     srun -A <ACCOUNT> -t 02:00:00 -q default -p fpga -N1  --forward-x  --pty bash -i
     module load env/staging/2023.1
     module load git-lfs
-    module load CMake jemalloc freeglut intel-fpga 520nmx
+    module load CMake jemalloc freeglut intel-oneapi 520nmx
     ```
 !!! warning "FPGA emulation"
     As the number of FPGA nodes is limited to 20, your interactive job may not start if the number of participants is larger than this number. If so, please use a different partition (e.g., cpu, largemem) to use FPGA emulation.
@@ -66,8 +66,6 @@ $>tree -L 2
     * **test_h_gate.cpp**: source file for the example testing the h gate.
     * **test_rxryrz.cpp**: test example for the 3 rotation gates rx, ry and rz.
     * **test_z_gate.cpp**: source file for the example testing the z gate.
-- **src-solution**:  the solution to fill all blank code. Replace `set(SOURCE_FILES src/bernstein-vazirani.cpp src/kernels.cpp)` by `set(SOURCE_FILES src-solution/bernstein-vazirani.cpp src-solution/kernels.cpp)` in the CMakeLists.txt file
-         test_z_gate.cpp
 
 ## Building code
 

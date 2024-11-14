@@ -2,42 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://LuxProvide.github.io/HPC-FPGA/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://LuxProvide.github.io/HPC-FPGA/compile/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://LuxProvide.github.io/HPC-FPGA/dpcpp/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://LuxProvide.github.io/HPC-FPGA/intro/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://LuxProvide.github.io/HPC-FPGA/oneapi_quantum/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://LuxProvide.github.io/HPC-FPGA/oneapi_toolbox/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://LuxProvide.github.io/HPC-FPGA/optimization/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://LuxProvide.github.io/HPC-FPGA/writing/</loc>
-         <lastmod>2024-11-11</lastmod>
+         <lastmod>2024-11-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

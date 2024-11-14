@@ -61,7 +61,7 @@ FPGA Development Boards and HPC (High-Performance Computing) FPGA Cards serve di
             - Block RAM: 1,800 Kbits
             - External memory: None
 
-        ![](https://cdn11.bigcommerce.com/s-7gavg/images/stencil/1280w/products/106/5610/Basys-3-1__42962.1594936409.1280.1280__22030.1602869940.386.513__54227.1670981208.png)
+        ![](./images/basys-3-0.png)
         
 
     === "HPC FPGA Cards"
@@ -78,14 +78,7 @@ FPGA Development Boards and HPC (High-Performance Computing) FPGA Cards serve di
 
         ![](https://www.bittware.com/files/520N-MX-800px.svg)
 
-## HLS vs HDL
-
-* <u>**High-Level Synthesis**</u> allows designers to describe hardware using high-level programming languages like C, C++, or SystemC. This means that HLS works at a higher level of abstraction, where developers can describe algorithms or logic without specifying the exact hardware details speeding up design. C/C++ code/kernels are translated to HDL using an offline compiler.  
-
-    - <u>Productivity</u>: offer faster development time since engineers can write code using familiar programming paradigms. Automated synthesis tools then translate the high-level code into RTL, allowing quicker prototyping.
-    - <u>Flexibility & Optimization</u>:  can accelerate development but it often provides less control over the final hardware implementation. This might result in less efficient utilization of FPGA resources or higher latency compared to hand-crafted RTL code.
-    - <u>Learning curve</u> has a lower learning curve for software engineers or those familiar with C/C++. This makes it more accessible to developers who might not have a hardware background.
-    - <u>Use cases</u> is often preferred for algorithm development, data flow designs, and when a software prototype exists that needs to be converted into hardware.
+## HDL vs HLS
 
 * <u>**Hardware Description Language**</u> require a more detailed specification of the hardware, providing a gate-level or Register Transfer Level (RTL) description. They require knowledge of the specific hardware constructs, like registers, flip-flops, etc. 
 
@@ -94,9 +87,17 @@ FPGA Development Boards and HPC (High-Performance Computing) FPGA Cards serve di
     - <u>Learning curve</u> require a deeper understanding of hardware concepts. Thus, there's a steeper learning curve, but it can provide more expertise in hardware design.
     - <u>Use cases</u> is used for more traditional hardware design, where control over implementation details and optimizations is critical.
 
-## From OpenCL to SYCL
+* <u>**High-Level Synthesis**</u> allows designers to describe hardware using high-level programming languages like C, C++, or SystemC. This means that HLS works at a higher level of abstraction, where developers can describe algorithms or logic without specifying the exact hardware details speeding up design. C/C++ code/kernels are translated to HDL using an offline compiler.  
 
-### OpenCL: a Low-level API
+    - <u>Productivity</u>: offer faster development time since engineers can write code using familiar programming paradigms. Automated synthesis tools then translate the high-level code into RTL, allowing quicker prototyping.
+    - <u>Flexibility & Optimization</u>:  can accelerate development but it often provides less control over the final hardware implementation. This might result in less efficient utilization of FPGA resources or higher latency compared to hand-crafted RTL code.
+    - <u>Learning curve</u> has a lower learning curve for software engineers or those familiar with C/C++. This makes it more accessible to developers who might not have a hardware background.
+    - <u>Use cases</u> is often preferred for algorithm development, data flow designs, and when a software prototype exists that needs to be converted into hardware.
+
+
+## HLS and Kernel-based programming: from OpenCL to SYCL
+
+### <u>OpenCL: a Low-level API</u>
 
 ![](https://www.khronos.org/assets/uploads/apis/2020-opencl-api-overview-2_3.jpg)
 
@@ -108,7 +109,7 @@ FPGA Development Boards and HPC (High-Performance Computing) FPGA Cards serve di
 
 ![](./images/fpga_opencl.png)
 
-### SYCL: a High-level C++ abstraction 
+### <u>SYCL: a High-level C++ abstraction</u>
 
 ![](./images/sycl_desc.png){ align=right width=350 }
 
@@ -157,7 +158,9 @@ FPGA Development Boards and HPC (High-Performance Computing) FPGA Cards serve di
         * Each operation uses a different hardware region
         * The design can take more space than the FPGA offers 
 
-        ![](./images/spatial_arch.png){ width=90% }
+        <figure markdown>
+        ![](./images/spatial_arch.png){ width=70% }
+        </figure>
 
 * The most obvious source of **parallelism** for FPGA is **pipelining** by inserting registers to store each operation output and keep all hardware unit busy. 
 
@@ -167,22 +170,8 @@ FPGA Development Boards and HPC (High-Performance Computing) FPGA Cards serve di
 
 * The authors of the [DPC++ book](https://link.springer.com/book/10.1007/978-1-4842-5574-2) have illustrated it perfectly in Chapter 17.
 
-!!! note "Pipelining example provided chap.17 (DPC++ book)"
-    === "Processing a single element (Figure. 17-13)"
-        ![](./images/single.png)
-
-        * The pipeline is mostly empty.
-        * Hardware units are not busy and the efficiency is thus low.
-            
-
-    === "Taking advantage of pipelining (Figure 17-14)"
-        ![](./images/multiple.png)
-
-        * More data than stages, the pipeline is full and all hardware units are busy.
-
 !!! warning "Vectorization"
-    Vectorization is not the main source of parallelism but help designing efficient pipeline. Since hardware can be reconfigured at will. The offline compiler can design N-bits Adders, multipliers which simplify greatly vectorization. In fact, the offline compiler vectorizes your design automatically if possible.
-
+    Vectorization is also possible but is not the main source of parallelism but help designing efficient pipeline. Since hardware can be reconfigured at will. The offline compiler can design N-bits Adders, multipliers which simplify greatly vectorization. In fact, the offline compiler vectorizes your design automatically if possible.
 
 ## Pipelining for FPGA
 
@@ -264,10 +253,13 @@ FPGA Development Boards and HPC (High-Performance Computing) FPGA Cards serve di
 * FPGA can efficiently handle loop execution, often maintaining a fully occupied pipeline or providing reports on what changes are necessary to enhance occupancy.
 * It's evident that if loop iterations were substituted with work-items, where the value created by one work-item would have to be transferred to another for incremental computation, the algorithm's description would become far more complex.
 
+## MeluXina Bittware 520N-MX FPGAs
 
 
+<center>
+![fpgas](./images/node_fpga.png){align=right width=40%}
+</center>
 
-## MeluXina Bittware 520N-MX FPGAS
 
 Each of the 20 MeluXina FPGA compute nodes comprise two **BittWare 520N-MX** FPGAs based on the [**Intel Stratix 10 FPGA chip**](https://www.intel.com/content/www/us/en/products/details/fpga/stratix/10/docs.html). Designed for compute acceleration, the 520N-MX are PCIe boards featuring Intel’s Stratix 10 MX2100 FPGA with integrated HBM2 memory. The size and speed of HBM2 (16GB at up to 512GB/s) enables acceleration of memory-bound applications. Programming with high abstraction C, C++, and OpenCLis possible through an specialized board support package (BSP) for the Intel OpenCL SDK. For more details see the dedicated [BittWare product page](https://www.bittware.com/fpga/520n-mx/).
 

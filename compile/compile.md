@@ -81,7 +81,7 @@ Before targeting a specific hardware accelerator, you need to ensure that the SY
     salloc -A <ACCOUNT> -t 48:00:00 -q default -p fpga -N 1
     # Load the staging environment
     module load env/staging/2023.1
-    module load intel-fpga
+    module load intel-oneapi
     module load 520nmx/20.4
     # Check the available devices
     sycl-ls

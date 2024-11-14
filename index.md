@@ -24,7 +24,7 @@ Following an introduction to Meluxina’s FPGA cards and an overview of SYCL pro
 
 * HPC software engineer in the Supercomputing Applications Team at LuxProvide
 
-* Previsoulsy, research scientist at the University of Luxembourg on large-scale optimization leveraging HPC
+* Previously, research scientist at the University of Luxembourg on large-scale optimization leveraging HPC
 
 * <u>Expertise</u>: heterogenous programming, code porting and optimization
 
