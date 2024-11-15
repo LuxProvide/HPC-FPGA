@@ -203,7 +203,7 @@ Buffers and accessors are key abstractions that enable memory management and dat
 
 !!! warning "What about memory accesses in FPGA ? "
     * For FPGAs, the access pattern, access width, and coalescing of memory accesses can significantly affect performance. You might want to make use of various attributes and pragmas specific to your compiler and FPGA to guide the compiler in optimizing memory accesses.
-    * In order to use **Direct Memory Acces (DMA)**, you will need to setup proper data alignment or the offline compiler will output the following warnings:
+    * In order to use **Direct Memory Access (DMA)**, you will need to setup proper data alignment or the offline compiler will output the following warnings:
     ```bash
     Running on device: p520_hpc_m210h_g3x16 : BittWare Stratix 10 MX OpenCL platform (aclbitt_s10mx_pcie0)
     add two vectors of size 256
@@ -628,3 +628,171 @@ Implicit dependencies obey to three main patterns (see [DPC++ book](https://link
        q.wait();
       }
     ``` 
+
+
+## Task parallelism 
+
+![](./images/all_pipes.png)
+
+Pipes function as a first-come, first-served buffer system, linking different parts of a design. The Intel® oneAPI DPC++/C++ Compiler offers various pipe types:
+
+* **Host Pipes**: These establish a connection between a host and a device.
+
+* **Inter-Kernel Pipes**: These facilitate efficient and low-latency data transfer and synchronization between kernels. They enable kernels to interact directly using on-device FIFO buffers, which utilize FPGA memory. The Intel® oneAPI DPC++/C++ Compiler promotes simultaneous kernel operation. By employing inter-kernel pipes for data movement among concurrently running kernels, data can be transferred without waiting for a kernel to finish, enhancing your design's throughput.
+
+* **I/O Pipes**: This is a one-way connection to the hardware, either as a source or sink, which can be linked to an FPGA board's input or output functionalities. Such functionalities could encompass network interfaces, PCIe®, cameras, or other data acquisition or processing tools and protocols.
+
+
+### Inter-Kernel Pipes
+
+![](./images/pipes.png)
+
+* We will only focus on Inter-Kernel Pipes to leverage task parallelism
+* As for OpenCL programming, pipes can be blocking or non-blocking
+* For Intel® oneAPI with FPGA, you need to include FPGA extension:
+```cpp
+#include <sycl/ext/intel/fpga_extensions.hpp>
+```
+
+!!! example "Pipe creation and usage"
+    === "Blocking pipes"
+        ```cpp linenums="1"
+        // Using alias eases considerably their usage
+        using my_pipe = ext::intel::pipe<      
+                        class InterKernelPipe, // An identifier for the pipe.
+                        int,                   // The type of data in the pipe.
+                        4>;                    // The capacity of the pipe.
+
+        // Single_task kernel 1
+        q.submit([&](handler& h) {
+            auto A = accessor(B_in, h);
+            h.single_task([=]() {
+                for (int i=0; i < count; i++) {
+                    my_pipe::write(A[i]); // write a single int into the pipe
+                    
+                }
+            });
+        }); 
+
+        // Single_task kernel 2
+        q.submit([&](handler& h) {
+            auto A = accessor(B_out, h);
+            h.single_task([=]() {
+                for (int i=0; i < count; i++) {
+                    A[i] = my_pipe::read(); // read the next int from the pipe
+                }
+            });
+        }); 
+        ```
+
+    === "Non-Blocking pipes"
+        ```cpp linenums="1"
+        // Using alias eases considerably their usage
+        using my_pipe = ext::intel::pipe<      
+                        class InterKernelPipe, // An identifier for the pipe.
+                        int,                   // The type of data in the pipe.
+                        4>;                    // The capacity of the pipe.
+
+        // Single_task kernel 1
+        q.submit([&](handler& h) {
+            auto A = accessor(B_in, h);
+            h.single_task([=]() {
+                valid_write = false;
+                for (int i=0; i < count; i++) {
+                    my_pipe::write(A[i],valid_write); // write a single int into the pipe
+
+                }
+            });
+        }); 
+
+        // Single_task kernel 2
+        q.submit([&](handler& h) {
+            auto A = accessor(B_out, h);
+            h.single_task([=]() {
+                valid_read = false;
+                for (int i=0; i < count; i++) {
+                    A[i] = my_pipe::read(valid_read); // read the next int from the pipe
+                }
+            });
+        }); 
+        
+        ```
+
+!!! warning "Stalling pipes"
+    * Care should be taken when implementing pipes, especially when there is a strong imbalance between the consumer kernel reading from the pipe and the producer kernel that feed the pipe. 
+    * Stalling pipes can be disastrous when using blocking pipes
+
+
+
+### Multiple Homogeneous FPGA Devices
+
+* Each Meluxina's FPGA nodes have two FPGA cards
+
+* You can verify their presence using the following commands: `aocl list-devices` or `sycl-ls` 
+
+* Differents kernels or the same kernels can be passed to these devices
+
+* Each devices should have his own `sycl::queue` and share or not a same context
+
+* Intel recommends to use a single context for performance reasons as show below:
+
+!!! example "Running on the two FPGA cards"
+    ```cpp linenums="1"
+
+        ...
+
+        sycl::platform p(selector);
+        auto devices = p.get_devices();
+        sycl::context C(devices);
+        sycl::queue q0 (C, devices[0]);
+        sycl::queue q1 (C, devices[1]);
+
+
+       std::cout << "Running on device: "
+                 << devices[0].get_info<sycl::info::device::name>().c_str()
+                 << std::endl;
+
+       std::cout << "Running on device: "
+                 << devices[1].get_info<sycl::info::device::name>().c_str()
+                 << std::endl;
+
+       ... 
+
+    ```
+
+### Multiple nodes
+
+* Meluxina FPGA's partition contains 20 nodes 
+
+* Combining MPI with the SYCL language allows developers to scale applications across diverse platforms within a distributed computing environment.
+
+* Note that MPI cannot be called inside a kernel 
+
+* FPGA comminucation path :
+
+<div style="width: 100%; float: center">
+``` mermaid
+graph LR
+    A[FPGA 1] -->|PCIe| B[NODE 1];
+    B[NODE 1] -->|Infiniband| C[NODE 2];
+    C[NODE 1] -->|PCIe| D[FPGA 2];
+```
+</div>
+
+
+!!! example "MPI Programs Using C++ with SYCL running on  multiple FPGAs"
+    ```cpp linenums="1"
+    --8<-- "./code/11-mpi/src/mpi_fpga_pi.cpp"
+    ```
+    <u> Output </u>:
+    ```bash
+    Rank #3 runs on: mel3014, uses device: p520_hpc_m210h_g3x16 : BittWare Stratix 10 MX OpenCL platform (aclbitt_s10mx_pcie0)
+    Rank #0 runs on: mel3001, uses device: p520_hpc_m210h_g3x16 : BittWare Stratix 10 MX OpenCL platform (aclbitt_s10mx_pcie0)
+    Rank #4 runs on: mel3017, uses device: p520_hpc_m210h_g3x16 : BittWare Stratix 10 MX OpenCL platform (aclbitt_s10mx_pcie0)
+    Rank #2 runs on: mel3013, uses device: p520_hpc_m210h_g3x16 : BittWare Stratix 10 MX OpenCL platform (aclbitt_s10mx_pcie0)
+    Rank #1 runs on: mel3010, uses device: p520_hpc_m210h_g3x16 : BittWare Stratix 10 MX OpenCL platform (aclbitt_s10mx_pcie0)
+    mpi native:             PI =3.141593654
+    Elapsed time is 9.703053059
+    ```
+
+

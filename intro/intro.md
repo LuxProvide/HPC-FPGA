@@ -55,7 +55,7 @@ FPGA Development Boards and HPC (High-Performance Computing) FPGA Cards serve di
         * **Flexibility**: They offer a broad range of input/output options to support diverse projects and experiments.
         * **Cost**: Generally more affordable than HPC FPGA cards due to their focus on versatility and accessibility.
         * **Target Audience**: Suitable for students, hobbyists, and engineers working on initial project phases or small-scale applications.
-        * **Progranning languages**: VHDL, Verilog, System Verilog.
+        * **Programming languages**: VHDL, Verilog, System Verilog.
         * **Specifications**: 
             - Logic Cells: 33,280 
             - Block RAM: 1,800 Kbits
@@ -70,7 +70,7 @@ FPGA Development Boards and HPC (High-Performance Computing) FPGA Cards serve di
         * **Performance**: Optimized for tasks such as data center operations, machine learning, financial modeling, and large-scale scientific computations.
         * **Cost**: Generally more expensive due to their advanced features and high-performance capabilities.
         * **Target Audience**: Aimed at professionals in industries requiring significant computational power, such as data scientists, researchers, and engineers in High-Performance Computing sectors.
-        * **Progranning languages**: <u>HLS</u>: C/C++, python --  <u>HDL</u>: VHDL, Verilog, System Verilog.
+        * **Programming languages**: <u>HLS</u>: C/C++, python --  <u>HDL</u>: VHDL, Verilog, System Verilog.
         * **Specifications**:
             - Logic Cells: 2,073,000 
             - Block RAM: 239.5 Mb
@@ -121,27 +121,12 @@ FPGA Development Boards and HPC (High-Performance Computing) FPGA Cards serve di
 
 * Automatic scheduling of data movement
 
-
-
-
-## Parallelism model for FPGA
+## Architecture of an FPGA
 
 * The differences between Instruction Set Architecture (ISA) for CPUs and Spatial Architecture for FPGAs lie in how they process instructions and handle computation:
 
-### 1. **Instruction Set Architecture (ISA) for CPUs:**
-   - **Sequential Execution:** CPUs operate using an Instruction Set Architecture (ISA), where a series of instructions (opcodes) are executed sequentially. The CPU fetches, decodes, and executes each instruction in a linear order.
-   - **Control Flow Dominated:** CPUs are designed for a wide range of tasks and rely on control flow (e.g., branches, loops) to manage the sequence of operations. They are optimized for tasks with complex control logic.
-   - **Fixed Architecture:** The CPU has a fixed architecture, with specific functional units like ALUs (Arithmetic Logic Units), registers, and cache memory. The same hardware is reused for different instructions.
-   - **Pipelining and Caching:** CPUs use techniques like pipelining (executing multiple instructions at different stages simultaneously) and caching (storing frequently accessed data) to improve performance.
-
-### 2. **Spatial Architecture for FPGAs:**
-   - **Parallel Execution:** FPGAs use spatial architecture, where computation is distributed across a reconfigurable fabric of logic blocks and interconnects. Multiple operations can occur simultaneously in different parts of the FPGA.
-   - **Data Flow Dominated:** FPGAs are optimized for data flow processing, where data is passed through a pipeline of operations. This makes them ideal for tasks that benefit from parallelism, like signal processing or machine learning inference.
-   - **Customizable Architecture:** The architecture of an FPGA is not fixed; it can be customized by the user to implement specific hardware designs. This allows for the creation of custom data paths and processing units tailored to the task at hand.
-   - **No Instruction Set:** Unlike CPUs, FPGAs do not execute instructions in a traditional sense. Instead, they are programmed using hardware description languages (HDLs) like VHDL or Verilog to define how the hardware should behave.
-
-### In a nutshell:
 - **ISA for CPUs**: Sequential, control-flow-oriented, with a fixed architecture using a predefined set of instructions. Suitable for general-purpose tasks.
+
 - **Spatial Architecture for FPGAs**: Parallel, data-flow-oriented, with a customizable architecture that can be tailored for specific high-performance tasks. Suitable for specialized, parallelizable workloads.
 
 !!! note "Difference between **Instruction Set** architecture and **Spatial** architecture"
@@ -173,7 +158,7 @@ FPGA Development Boards and HPC (High-Performance Computing) FPGA Cards serve di
 !!! warning "Vectorization"
     Vectorization is also possible but is not the main source of parallelism but help designing efficient pipeline. Since hardware can be reconfigured at will. The offline compiler can design N-bits Adders, multipliers which simplify greatly vectorization. In fact, the offline compiler vectorizes your design automatically if possible.
 
-## Pipelining for FPGA
+## FPGA parallelism: pipelining
 
 !!! abstract "Pipelining (see FPGA Optimization Guide for Intel® oneAPI Toolkits)"
     * Pipelining is a design technique used in synchronous digital circuits to increase maximum frequency (fMAX).
@@ -193,20 +178,9 @@ FPGA Development Boards and HPC (High-Performance Computing) FPGA Cards serve di
     * The fMAX is the reciprocal of this critical path delay, and having a high fMAX is desirable as it leads to better performance when there are no other restrictions.
     ![](./images/fmax.png)
 
-!!! abstract "Throughput"
-    * The **Throughput** in a digital circuit refers to the speed at which data is handled.
-    * When there are no other limiting factors, a higher fMAX leads to increased throughput, such as more samples per second.
-    * Often synonymous with performance, throughput is frequently used to gauge the effectiveness of a circuit.
-    ![](./images/throughput.png)
-
-!!! abstract "Latency"
-    * The **Latency** measures the duration to complete operations in a digital circuit, and it can be assessed for individual tasks or the whole circuit.
-    * It can be measured in time units like microseconds or clock cycles, with the latter often preferred. i
-    * Measuring latency in clock cycles separates it from the circuit's clock frequency, making it easier to understand the real effects of modifications on the circuit's performance.
-    ![](./images/latency.png)
 
 !!! abstract "Occupancy"
-    * The **occupancy** of a datapath at a specific moment signifies the fraction of the datapath filled with valid data.i
+    * The **occupancy** of a datapath at a specific moment signifies the fraction of the datapath filled with valid data.
     * When looking at a circuit's execution of a program, the occupancy is the mean value from the beginning to the end of the program's run.
     * Parts of the datapath that are unoccupied are commonly called bubbles, akin to a CPU's no-operation (no-ops) instructions, which don't influence the final output.
     * Minimizing these bubbles leads to greater occupancy. If there are no other hindrances, optimizing the occupancy of the datapath will boost throughput.
@@ -214,44 +188,6 @@ FPGA Development Boards and HPC (High-Performance Computing) FPGA Cards serve di
         ![](./images/occupancy.png)
        <figcaption>Occupancy: 2/5=40%</figcaption>
     </figure>
-
-### Pipelining with ND-range kernels
-
-* ND-range kernels are based on a hierachical grouping of work-items
-* A work-item represents a single unit of work 
-* Independent simple units of work don't communicate or share data very often
-* Useful when porting a GPU kernel to FPGA
-
-<figure markdown>
-![](./images/ndrange.png) 
-  <figcaption><a href=https://link.springer.com/book/10.1007/978-1-4842-5574-2>DPC++ book</a> -- Figure 17-15 </figcaption>
-</figure>
-
-* FPGAs are different from GPU (lots of threads started at the same time)
-* Impossible to replicate a hardware for a million of work-items
-* Work-items are injected into the pipeline
-* A deep pipeline means lots of work-items executing different tasks in parallel
-
-<figure markdown>
-![](./images/ndrange_pipeline.png)
-  <figcaption><a href=https://link.springer.com/book/10.1007/978-1-4842-5574-2>DPC++ book</a> -- Figure 17-16 </figcaption>
-</figure>
-
-### Pipelining with single-work item (loop)
-
-* When your code can't be decomposed into independent works, you can rely on loop parallelism using FPGA
-* In such a situation, the pipeline inputs is not work-items but loop iterations
-* For single-work-item kernels, the developer does not need to do anything special to preserve the data dependency 
-* Communications between kernels is also much easier
-
-<figure markdown>
-![](./images/loop_pipeline.png)
-  <figcaption><a href=https://link.springer.com/book/10.1007/978-1-4842-5574-2>DPC++ book</a> -- Figure 17-21 </figcaption>
-</figure>
-
-
-* FPGA can efficiently handle loop execution, often maintaining a fully occupied pipeline or providing reports on what changes are necessary to enhance occupancy.
-* It's evident that if loop iterations were substituted with work-items, where the value created by one work-item would have to be transferred to another for incremental computation, the algorithm's description would become far more complex.
 
 ## MeluXina Bittware 520N-MX FPGAs
 

@@ -60,7 +60,7 @@ In this course, you will learn to:
 
 - This course is for students, researchers, enginners wishing to discover how to use oneAPI to program FPGA. 
 
-- Participants should still have some experience with Python & modern C++ (e.g., [Lambdas](https://en.cppreference.com/w/cpp/language/lambda), [class deduction templates](https://en.cppreference.com/w/cpp/language/class_template_argument_deduction)).
+- Participants should still have some experience with modern C++ (e.g., [Lambdas](https://en.cppreference.com/w/cpp/language/lambda), [class deduction templates](https://en.cppreference.com/w/cpp/language/class_template_argument_deduction)).
 
 ## About this course
 

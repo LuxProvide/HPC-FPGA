@@ -18,7 +18,7 @@
         <link rel="prev" href="../compile/">
       
       
-        <link rel="next" href="../optimization/">
+        <link rel="next" href="../oneapi_quantum/">
       
       
       <link rel="icon" href="../assets/favicon.png">
@@ -300,27 +300,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../dpcpp/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    SYCL & the Intel® DPC++ compiler
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../compile/" class="md-nav__link">
         
   
@@ -495,31 +474,52 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#task-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task parallelism
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task parallelism">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inter-kernel-pipes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inter-Kernel Pipes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-homogeneous-fpga-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Homogeneous FPGA Devices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple nodes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../optimization/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Optimizing SYCL programs
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -602,6 +602,71 @@
   
   <span class="md-ellipsis">
     Creating a Quantum toolbox
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optimizing SYCL programs
   </span>
   
 
@@ -742,6 +807,48 @@
   <a href="#pipelining-with-single-work-item-loop" class="md-nav__link">
     <span class="md-ellipsis">
       Pipelining with single-work item (loop)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task parallelism
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task parallelism">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inter-kernel-pipes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inter-Kernel Pipes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-homogeneous-fpga-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Homogeneous FPGA Devices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple nodes
     </span>
   </a>
   
@@ -1117,7 +1224,7 @@
 <p class="admonition-title">What about memory accesses in FPGA ? </p>
 <ul>
 <li>For FPGAs, the access pattern, access width, and coalescing of memory accesses can significantly affect performance. You might want to make use of various attributes and pragmas specific to your compiler and FPGA to guide the compiler in optimizing memory accesses.</li>
-<li>In order to use <strong>Direct Memory Acces (DMA)</strong>, you will need to setup proper data alignment or the offline compiler will output the following warnings:
+<li>In order to use <strong>Direct Memory Access (DMA)</strong>, you will need to setup proper data alignment or the offline compiler will output the following warnings:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Running<span class="w"> </span>on<span class="w"> </span>device:<span class="w"> </span>p520_hpc_m210h_g3x16<span class="w"> </span>:<span class="w"> </span>BittWare<span class="w"> </span>Stratix<span class="w"> </span><span class="m">10</span><span class="w"> </span>MX<span class="w"> </span>OpenCL<span class="w"> </span>platform<span class="w"> </span><span class="o">(</span>aclbitt_s10mx_pcie0<span class="o">)</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>add<span class="w"> </span>two<span class="w"> </span>vectors<span class="w"> </span>of<span class="w"> </span>size<span class="w"> </span><span class="m">256</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>**<span class="w"> </span>WARNING:<span class="w"> </span><span class="o">[</span>aclbitt_s10mx_pcie0<span class="o">]</span><span class="w"> </span>NOT<span class="w"> </span>using<span class="w"> </span>DMA<span class="w"> </span>to<span class="w"> </span>transfer<span class="w"> </span><span class="m">1024</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span>host<span class="w"> </span>to<span class="w"> </span>device<span class="w"> </span>because<span class="w"> </span>of<span class="w"> </span>lack<span class="w"> </span>of<span class="w"> </span>alignment
@@ -2388,6 +2495,520 @@ C[TaskC] --&gt; D[TaskD];</code></pre>
 </span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18"></a><span class="w">  </span><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 </div>
+<h2 id="task-parallelism">Task parallelism<a class="headerlink" href="#task-parallelism" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../images/all_pipes.png" /></p>
+<p>Pipes function as a first-come, first-served buffer system, linking different parts of a design. The Intel® oneAPI DPC++/C++ Compiler offers various pipe types:</p>
+<ul>
+<li>
+<p><strong>Host Pipes</strong>: These establish a connection between a host and a device.</p>
+</li>
+<li>
+<p><strong>Inter-Kernel Pipes</strong>: These facilitate efficient and low-latency data transfer and synchronization between kernels. They enable kernels to interact directly using on-device FIFO buffers, which utilize FPGA memory. The Intel® oneAPI DPC++/C++ Compiler promotes simultaneous kernel operation. By employing inter-kernel pipes for data movement among concurrently running kernels, data can be transferred without waiting for a kernel to finish, enhancing your design's throughput.</p>
+</li>
+<li>
+<p><strong>I/O Pipes</strong>: This is a one-way connection to the hardware, either as a source or sink, which can be linked to an FPGA board's input or output functionalities. Such functionalities could encompass network interfaces, PCIe®, cameras, or other data acquisition or processing tools and protocols.</p>
+</li>
+</ul>
+<h3 id="inter-kernel-pipes">Inter-Kernel Pipes<a class="headerlink" href="#inter-kernel-pipes" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../images/pipes.png" /></p>
+<ul>
+<li>We will only focus on Inter-Kernel Pipes to leverage task parallelism</li>
+<li>As for OpenCL programming, pipes can be blocking or non-blocking</li>
+<li>For Intel® oneAPI with FPGA, you need to include FPGA extension:
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sycl/ext/intel/fpga_extensions.hpp&gt;</span>
+</span></code></pre></div></li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Pipe creation and usage</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Blocking pipes</label><label for="__tabbed_5_2">Non-Blocking pipes</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-16-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-16-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-16-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-16-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-16-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-16-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-16-10">10</a></span>
+<span class="normal"><a href="#__codelineno-16-11">11</a></span>
+<span class="normal"><a href="#__codelineno-16-12">12</a></span>
+<span class="normal"><a href="#__codelineno-16-13">13</a></span>
+<span class="normal"><a href="#__codelineno-16-14">14</a></span>
+<span class="normal"><a href="#__codelineno-16-15">15</a></span>
+<span class="normal"><a href="#__codelineno-16-16">16</a></span>
+<span class="normal"><a href="#__codelineno-16-17">17</a></span>
+<span class="normal"><a href="#__codelineno-16-18">18</a></span>
+<span class="normal"><a href="#__codelineno-16-19">19</a></span>
+<span class="normal"><a href="#__codelineno-16-20">20</a></span>
+<span class="normal"><a href="#__codelineno-16-21">21</a></span>
+<span class="normal"><a href="#__codelineno-16-22">22</a></span>
+<span class="normal"><a href="#__codelineno-16-23">23</a></span>
+<span class="normal"><a href="#__codelineno-16-24">24</a></span>
+<span class="normal"><a href="#__codelineno-16-25">25</a></span>
+<span class="normal"><a href="#__codelineno-16-26">26</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="c1">// Using alias eases considerably their usage</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="k">using</span><span class="w"> </span><span class="n">my_pipe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ext</span><span class="o">::</span><span class="n">intel</span><span class="o">::</span><span class="n">pipe</span><span class="o">&lt;</span><span class="w">      </span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="w">                </span><span class="k">class</span><span class="w"> </span><span class="nc">InterKernelPipe</span><span class="p">,</span><span class="w"> </span><span class="c1">// An identifier for the pipe.</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="w">                </span><span class="kt">int</span><span class="p">,</span><span class="w">                   </span><span class="c1">// The type of data in the pipe.</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="w">                </span><span class="mi">4</span><span class="o">&gt;</span><span class="p">;</span><span class="w">                    </span><span class="c1">// The capacity of the pipe.</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6"></a>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="c1">// Single_task kernel 1</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="n">q</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">handler</span><span class="o">&amp;</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accessor</span><span class="p">(</span><span class="n">B_in</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="w">    </span><span class="n">h</span><span class="p">.</span><span class="n">single_task</span><span class="p">([</span><span class="o">=</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12"></a><span class="w">            </span><span class="n">my_pipe</span><span class="o">::</span><span class="n">write</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w"> </span><span class="c1">// write a single int into the pipe</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13"></a>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15"></a><span class="w">    </span><span class="p">});</span>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16"></a><span class="p">});</span><span class="w"> </span>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17"></a>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18"></a><span class="c1">// Single_task kernel 2</span>
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19"></a><span class="n">q</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">handler</span><span class="o">&amp;</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20"></a><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accessor</span><span class="p">(</span><span class="n">B_out</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
+</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21"></a><span class="w">    </span><span class="n">h</span><span class="p">.</span><span class="n">single_task</span><span class="p">([</span><span class="o">=</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-22"><a id="__codelineno-16-22" name="__codelineno-16-22"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-23"><a id="__codelineno-16-23" name="__codelineno-16-23"></a><span class="w">            </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_pipe</span><span class="o">::</span><span class="n">read</span><span class="p">();</span><span class="w"> </span><span class="c1">// read the next int from the pipe</span>
+</span><span id="__span-16-24"><a id="__codelineno-16-24" name="__codelineno-16-24"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-16-25"><a id="__codelineno-16-25" name="__codelineno-16-25"></a><span class="w">    </span><span class="p">});</span>
+</span><span id="__span-16-26"><a id="__codelineno-16-26" name="__codelineno-16-26"></a><span class="p">});</span><span class="w"> </span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-17-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-17-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-17-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-17-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-17-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-17-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-17-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-17-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-17-10">10</a></span>
+<span class="normal"><a href="#__codelineno-17-11">11</a></span>
+<span class="normal"><a href="#__codelineno-17-12">12</a></span>
+<span class="normal"><a href="#__codelineno-17-13">13</a></span>
+<span class="normal"><a href="#__codelineno-17-14">14</a></span>
+<span class="normal"><a href="#__codelineno-17-15">15</a></span>
+<span class="normal"><a href="#__codelineno-17-16">16</a></span>
+<span class="normal"><a href="#__codelineno-17-17">17</a></span>
+<span class="normal"><a href="#__codelineno-17-18">18</a></span>
+<span class="normal"><a href="#__codelineno-17-19">19</a></span>
+<span class="normal"><a href="#__codelineno-17-20">20</a></span>
+<span class="normal"><a href="#__codelineno-17-21">21</a></span>
+<span class="normal"><a href="#__codelineno-17-22">22</a></span>
+<span class="normal"><a href="#__codelineno-17-23">23</a></span>
+<span class="normal"><a href="#__codelineno-17-24">24</a></span>
+<span class="normal"><a href="#__codelineno-17-25">25</a></span>
+<span class="normal"><a href="#__codelineno-17-26">26</a></span>
+<span class="normal"><a href="#__codelineno-17-27">27</a></span>
+<span class="normal"><a href="#__codelineno-17-28">28</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="c1">// Using alias eases considerably their usage</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="k">using</span><span class="w"> </span><span class="n">my_pipe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ext</span><span class="o">::</span><span class="n">intel</span><span class="o">::</span><span class="n">pipe</span><span class="o">&lt;</span><span class="w">      </span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="w">                </span><span class="k">class</span><span class="w"> </span><span class="nc">InterKernelPipe</span><span class="p">,</span><span class="w"> </span><span class="c1">// An identifier for the pipe.</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="w">                </span><span class="kt">int</span><span class="p">,</span><span class="w">                   </span><span class="c1">// The type of data in the pipe.</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="w">                </span><span class="mi">4</span><span class="o">&gt;</span><span class="p">;</span><span class="w">                    </span><span class="c1">// The capacity of the pipe.</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6"></a>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="c1">// Single_task kernel 1</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8"></a><span class="n">q</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">handler</span><span class="o">&amp;</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9"></a><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accessor</span><span class="p">(</span><span class="n">B_in</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10"></a><span class="w">    </span><span class="n">h</span><span class="p">.</span><span class="n">single_task</span><span class="p">([</span><span class="o">=</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11"></a><span class="w">        </span><span class="n">valid_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13"></a><span class="w">            </span><span class="n">my_pipe</span><span class="o">::</span><span class="n">write</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">valid_write</span><span class="p">);</span><span class="w"> </span><span class="c1">// write a single int into the pipe</span>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14"></a>
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16"></a><span class="w">    </span><span class="p">});</span>
+</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17"></a><span class="p">});</span><span class="w"> </span>
+</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18"></a>
+</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19"></a><span class="c1">// Single_task kernel 2</span>
+</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20"></a><span class="n">q</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">handler</span><span class="o">&amp;</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21"></a><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accessor</span><span class="p">(</span><span class="n">B_out</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">);</span>
+</span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22"></a><span class="w">    </span><span class="n">h</span><span class="p">.</span><span class="n">single_task</span><span class="p">([</span><span class="o">=</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-23"><a id="__codelineno-17-23" name="__codelineno-17-23"></a><span class="w">        </span><span class="n">valid_read</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</span><span id="__span-17-24"><a id="__codelineno-17-24" name="__codelineno-17-24"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-25"><a id="__codelineno-17-25" name="__codelineno-17-25"></a><span class="w">            </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_pipe</span><span class="o">::</span><span class="n">read</span><span class="p">(</span><span class="n">valid_read</span><span class="p">);</span><span class="w"> </span><span class="c1">// read the next int from the pipe</span>
+</span><span id="__span-17-26"><a id="__codelineno-17-26" name="__codelineno-17-26"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-17-27"><a id="__codelineno-17-27" name="__codelineno-17-27"></a><span class="w">    </span><span class="p">});</span>
+</span><span id="__span-17-28"><a id="__codelineno-17-28" name="__codelineno-17-28"></a><span class="p">});</span><span class="w"> </span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Stalling pipes</p>
+<ul>
+<li>Care should be taken when implementing pipes, especially when there is a strong imbalance between the consumer kernel reading from the pipe and the producer kernel that feed the pipe. </li>
+<li>Stalling pipes can be disastrous when using blocking pipes</li>
+</ul>
+</div>
+<h3 id="multiple-homogeneous-fpga-devices">Multiple Homogeneous FPGA Devices<a class="headerlink" href="#multiple-homogeneous-fpga-devices" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Each Meluxina's FPGA nodes have two FPGA cards</p>
+</li>
+<li>
+<p>You can verify their presence using the following commands: <code>aocl list-devices</code> or <code>sycl-ls</code> </p>
+</li>
+<li>
+<p>Differents kernels or the same kernels can be passed to these devices</p>
+</li>
+<li>
+<p>Each devices should have his own <code>sycl::queue</code> and share or not a same context</p>
+</li>
+<li>
+<p>Intel recommends to use a single context for performance reasons as show below:</p>
+</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Running on the two FPGA cards</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-18-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-18-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-18-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-18-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-18-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-18-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-18-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-18-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-18-10">10</a></span>
+<span class="normal"><a href="#__codelineno-18-11">11</a></span>
+<span class="normal"><a href="#__codelineno-18-12">12</a></span>
+<span class="normal"><a href="#__codelineno-18-13">13</a></span>
+<span class="normal"><a href="#__codelineno-18-14">14</a></span>
+<span class="normal"><a href="#__codelineno-18-15">15</a></span>
+<span class="normal"><a href="#__codelineno-18-16">16</a></span>
+<span class="normal"><a href="#__codelineno-18-17">17</a></span>
+<span class="normal"><a href="#__codelineno-18-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="w">    </span><span class="p">...</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="w">    </span><span class="n">sycl</span><span class="o">::</span><span class="n">platform</span><span class="w"> </span><span class="n">p</span><span class="p">(</span><span class="n">selector</span><span class="p">);</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">devices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">get_devices</span><span class="p">();</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="w">    </span><span class="n">sycl</span><span class="o">::</span><span class="n">context</span><span class="w"> </span><span class="nf">C</span><span class="p">(</span><span class="n">devices</span><span class="p">);</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="w">    </span><span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="w"> </span><span class="nf">q0</span><span class="w"> </span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="n">devices</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="w">    </span><span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="w"> </span><span class="nf">q1</span><span class="w"> </span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="n">devices</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8"></a>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9"></a>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10"></a><span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Running on device: &quot;</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11"></a><span class="w">             </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">devices</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">get_info</span><span class="o">&lt;</span><span class="n">sycl</span><span class="o">::</span><span class="n">info</span><span class="o">::</span><span class="n">device</span><span class="o">::</span><span class="n">name</span><span class="o">&gt;</span><span class="p">().</span><span class="n">c_str</span><span class="p">()</span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12"></a><span class="w">             </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13"></a>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14"></a><span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Running on device: &quot;</span>
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15"></a><span class="w">             </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">devices</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">get_info</span><span class="o">&lt;</span><span class="n">sycl</span><span class="o">::</span><span class="n">info</span><span class="o">::</span><span class="n">device</span><span class="o">::</span><span class="n">name</span><span class="o">&gt;</span><span class="p">().</span><span class="n">c_str</span><span class="p">()</span>
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16"></a><span class="w">             </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17"></a>
+</span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18"></a><span class="w">   </span><span class="p">...</span><span class="w"> </span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+<h3 id="multiple-nodes">Multiple nodes<a class="headerlink" href="#multiple-nodes" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Meluxina FPGA's partition contains 20 nodes </p>
+</li>
+<li>
+<p>Combining MPI with the SYCL language allows developers to scale applications across diverse platforms within a distributed computing environment.</p>
+</li>
+<li>
+<p>Note that MPI cannot be called inside a kernel </p>
+</li>
+<li>
+<p>FPGA comminucation path :</p>
+</li>
+</ul>
+<div style="width: 100%; float: center">
+<pre class="mermaid"><code>graph LR
+    A[FPGA 1] --&gt;|PCIe| B[NODE 1];
+    B[NODE 1] --&gt;|Infiniband| C[NODE 2];
+    C[NODE 1] --&gt;|PCIe| D[FPGA 2];</code></pre>
+</div>
+
+<div class="admonition example">
+<p class="admonition-title">MPI Programs Using C++ with SYCL running on  multiple FPGAs</p>
+<p><div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-19-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-19-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-19-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-19-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-19-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-19-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-19-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-19-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-19-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-19-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-19-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-19-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-19-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-19-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-19-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-19-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-19-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-19-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-19-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-19-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-19-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-19-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-19-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-19-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-19-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-19-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-19-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-19-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-19-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-19-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-19-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-19-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-19-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-19-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-19-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-19-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-19-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-19-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-19-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-19-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-19-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-19-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-19-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-19-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-19-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-19-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-19-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-19-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-19-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-19-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-19-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-19-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-19-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-19-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-19-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-19-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-19-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-19-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-19-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-19-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-19-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-19-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-19-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-19-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-19-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-19-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-19-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-19-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-19-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-19-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-19-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-19-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-19-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-19-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-19-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-19-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-19-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-19-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-19-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-19-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-19-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-19-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-19-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-19-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-19-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-19-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-19-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-19-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-19-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-19-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-19-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-19-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-19-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-19-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-19-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-19-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-19-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-19-100">100</a></span>
+<span class="normal"><a href="#__codelineno-19-101">101</a></span>
+<span class="normal"><a href="#__codelineno-19-102">102</a></span>
+<span class="normal"><a href="#__codelineno-19-103">103</a></span>
+<span class="normal"><a href="#__codelineno-19-104">104</a></span>
+<span class="normal"><a href="#__codelineno-19-105">105</a></span>
+<span class="normal"><a href="#__codelineno-19-106">106</a></span>
+<span class="normal"><a href="#__codelineno-19-107">107</a></span>
+<span class="normal"><a href="#__codelineno-19-108">108</a></span>
+<span class="normal"><a href="#__codelineno-19-109">109</a></span>
+<span class="normal"><a href="#__codelineno-19-110">110</a></span>
+<span class="normal"><a href="#__codelineno-19-111">111</a></span>
+<span class="normal"><a href="#__codelineno-19-112">112</a></span>
+<span class="normal"><a href="#__codelineno-19-113">113</a></span>
+<span class="normal"><a href="#__codelineno-19-114">114</a></span>
+<span class="normal"><a href="#__codelineno-19-115">115</a></span>
+<span class="normal"><a href="#__codelineno-19-116">116</a></span>
+<span class="normal"><a href="#__codelineno-19-117">117</a></span>
+<span class="normal"><a href="#__codelineno-19-118">118</a></span>
+<span class="normal"><a href="#__codelineno-19-119">119</a></span>
+<span class="normal"><a href="#__codelineno-19-120">120</a></span>
+<span class="normal"><a href="#__codelineno-19-121">121</a></span>
+<span class="normal"><a href="#__codelineno-19-122">122</a></span>
+<span class="normal"><a href="#__codelineno-19-123">123</a></span>
+<span class="normal"><a href="#__codelineno-19-124">124</a></span>
+<span class="normal"><a href="#__codelineno-19-125">125</a></span>
+<span class="normal"><a href="#__codelineno-19-126">126</a></span>
+<span class="normal"><a href="#__codelineno-19-127">127</a></span>
+<span class="normal"><a href="#__codelineno-19-128">128</a></span>
+<span class="normal"><a href="#__codelineno-19-129">129</a></span>
+<span class="normal"><a href="#__codelineno-19-130">130</a></span>
+<span class="normal"><a href="#__codelineno-19-131">131</a></span>
+<span class="normal"><a href="#__codelineno-19-132">132</a></span>
+<span class="normal"><a href="#__codelineno-19-133">133</a></span>
+<span class="normal"><a href="#__codelineno-19-134">134</a></span>
+<span class="normal"><a href="#__codelineno-19-135">135</a></span>
+<span class="normal"><a href="#__codelineno-19-136">136</a></span>
+<span class="normal"><a href="#__codelineno-19-137">137</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="c1">// oneAPI headers</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sycl/ext/intel/fpga_extensions.hpp&gt;</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sycl/sycl.hpp&gt;</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iomanip&gt;</span><span class="c1">  // setprecision library</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;numeric&gt;</span><span class="c1"> </span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8"></a>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9"></a>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">sycl</span><span class="p">;</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11"></a><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12"></a>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13"></a><span class="c1">////////////////////////////////////////////////////////////////////////</span>
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14"></a><span class="c1">//</span>
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15"></a><span class="c1">// Each MPI ranks compute the number Pi partially on target device using SYCL.</span>
+</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16"></a><span class="c1">// The partial result of number Pi is returned in &quot;results&quot;.</span>
+</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17"></a><span class="c1">//</span>
+</span><span id="__span-19-18"><a id="__codelineno-19-18" name="__codelineno-19-18"></a><span class="c1">////////////////////////////////////////////////////////////////////////</span>
+</span><span id="__span-19-19"><a id="__codelineno-19-19" name="__codelineno-19-19"></a><span class="kt">void</span><span class="w"> </span><span class="nf">mpi_native</span><span class="p">(</span><span class="kt">double</span><span class="o">*</span><span class="w"> </span><span class="n">results</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rank_num</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num_procs</span><span class="p">,</span>
+</span><span id="__span-19-20"><a id="__codelineno-19-20" name="__codelineno-19-20"></a><span class="w">                </span><span class="kt">long</span><span class="w"> </span><span class="n">total_num_steps</span><span class="p">,</span><span class="w"> </span><span class="n">queue</span><span class="o">&amp;</span><span class="w"> </span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-21"><a id="__codelineno-19-21" name="__codelineno-19-21"></a>
+</span><span id="__span-19-22"><a id="__codelineno-19-22" name="__codelineno-19-22"></a><span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">dx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">total_num_steps</span><span class="p">;</span>
+</span><span id="__span-19-23"><a id="__codelineno-19-23" name="__codelineno-19-23"></a><span class="w">  </span><span class="kt">long</span><span class="w"> </span><span class="n">items_per_proc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total_num_steps</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="kt">size_t</span><span class="p">(</span><span class="n">num_procs</span><span class="p">);</span>
+</span><span id="__span-19-24"><a id="__codelineno-19-24" name="__codelineno-19-24"></a><span class="w">  </span><span class="c1">// The size of amount of memory that will be given to the buffer.</span>
+</span><span id="__span-19-25"><a id="__codelineno-19-25" name="__codelineno-19-25"></a><span class="w">  </span><span class="c1">//range&lt;1&gt; num_items{items_per_proc};</span>
+</span><span id="__span-19-26"><a id="__codelineno-19-26" name="__codelineno-19-26"></a>
+</span><span id="__span-19-27"><a id="__codelineno-19-27" name="__codelineno-19-27"></a><span class="w">  </span><span class="c1">// Buffers are used to tell SYCL which data will be shared between the host</span>
+</span><span id="__span-19-28"><a id="__codelineno-19-28" name="__codelineno-19-28"></a><span class="w">  </span><span class="c1">// and the devices.</span>
+</span><span id="__span-19-29"><a id="__codelineno-19-29" name="__codelineno-19-29"></a><span class="w">  </span><span class="n">buffer</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">results_buf</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
+</span><span id="__span-19-30"><a id="__codelineno-19-30" name="__codelineno-19-30"></a><span class="w">                               </span><span class="n">range</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">items_per_proc</span><span class="p">));</span>
+</span><span id="__span-19-31"><a id="__codelineno-19-31" name="__codelineno-19-31"></a>
+</span><span id="__span-19-32"><a id="__codelineno-19-32" name="__codelineno-19-32"></a><span class="w">  </span><span class="c1">// Submit takes in a lambda that is passed in a command group handler</span>
+</span><span id="__span-19-33"><a id="__codelineno-19-33" name="__codelineno-19-33"></a><span class="w">  </span><span class="c1">// constructed at runtime.</span>
+</span><span id="__span-19-34"><a id="__codelineno-19-34" name="__codelineno-19-34"></a><span class="w">  </span><span class="n">q</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">handler</span><span class="o">&amp;</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-35"><a id="__codelineno-19-35" name="__codelineno-19-35"></a><span class="w">    </span><span class="c1">// Accessors are used to get access to the memory owned by the buffers.</span>
+</span><span id="__span-19-36"><a id="__codelineno-19-36" name="__codelineno-19-36"></a><span class="w">    </span><span class="n">accessor</span><span class="w"> </span><span class="n">results_accessor</span><span class="p">(</span><span class="n">results_buf</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">write_only</span><span class="p">);</span>
+</span><span id="__span-19-37"><a id="__codelineno-19-37" name="__codelineno-19-37"></a><span class="w">    </span><span class="c1">// Each kernel calculates a partial of the number Pi in parallel.</span>
+</span><span id="__span-19-38"><a id="__codelineno-19-38" name="__codelineno-19-38"></a><span class="w">    </span><span class="n">h</span><span class="p">.</span><span class="n">parallel_for</span><span class="p">(</span><span class="n">range</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">items_per_proc</span><span class="p">),</span><span class="w"> </span><span class="p">[</span><span class="o">=</span><span class="p">](</span><span class="n">id</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-39"><a id="__codelineno-19-39" name="__codelineno-19-39"></a><span class="w">      </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="kt">double</span><span class="p">)(</span><span class="n">rank_num</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">items_per_proc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k</span><span class="p">))</span><span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="n">dx</span><span class="w"> </span><span class="p">;</span>
+</span><span id="__span-19-40"><a id="__codelineno-19-40" name="__codelineno-19-40"></a><span class="w">      </span><span class="n">results_accessor</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">4.0f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dx</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0f</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+</span><span id="__span-19-41"><a id="__codelineno-19-41" name="__codelineno-19-41"></a><span class="w">    </span><span class="p">});</span>
+</span><span id="__span-19-42"><a id="__codelineno-19-42" name="__codelineno-19-42"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-19-43"><a id="__codelineno-19-43" name="__codelineno-19-43"></a><span class="p">}</span>
+</span><span id="__span-19-44"><a id="__codelineno-19-44" name="__codelineno-19-44"></a>
+</span><span id="__span-19-45"><a id="__codelineno-19-45" name="__codelineno-19-45"></a>
+</span><span id="__span-19-46"><a id="__codelineno-19-46" name="__codelineno-19-46"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-47"><a id="__codelineno-19-47" name="__codelineno-19-47"></a><span class="w">  </span><span class="kt">long</span><span class="w"> </span><span class="n">num_steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000000</span><span class="p">;</span>
+</span><span id="__span-19-48"><a id="__codelineno-19-48" name="__codelineno-19-48"></a><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">machine_name</span><span class="p">[</span><span class="n">MPI_MAX_PROCESSOR_NAME</span><span class="p">];</span>
+</span><span id="__span-19-49"><a id="__codelineno-19-49" name="__codelineno-19-49"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">name_len</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-19-50"><a id="__codelineno-19-50" name="__codelineno-19-50"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-19-51"><a id="__codelineno-19-51" name="__codelineno-19-51"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num_procs</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-19-52"><a id="__codelineno-19-52" name="__codelineno-19-52"></a><span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">pi</span><span class="o">=</span><span class="mf">0.0</span><span class="p">;</span>
+</span><span id="__span-19-53"><a id="__codelineno-19-53" name="__codelineno-19-53"></a><span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">t1</span><span class="p">,</span><span class="w"> </span><span class="n">t2</span><span class="p">;</span>
+</span><span id="__span-19-54"><a id="__codelineno-19-54" name="__codelineno-19-54"></a><span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-55"><a id="__codelineno-19-55" name="__codelineno-19-55"></a><span class="w">  </span><span class="c1">// Use compile-time macros to select either:</span>
+</span><span id="__span-19-56"><a id="__codelineno-19-56" name="__codelineno-19-56"></a><span class="w">  </span><span class="c1">//   - the FPGA emulator device (CPU emulation of the FPGA)</span>
+</span><span id="__span-19-57"><a id="__codelineno-19-57" name="__codelineno-19-57"></a><span class="w">  </span><span class="c1">//   - the FPGA device (a real FPGA)</span>
+</span><span id="__span-19-58"><a id="__codelineno-19-58" name="__codelineno-19-58"></a><span class="w">  </span><span class="c1">//   - the simulator device</span>
+</span><span id="__span-19-59"><a id="__codelineno-19-59" name="__codelineno-19-59"></a><span class="w">  </span><span class="cp">#if FPGA_SIMULATOR</span>
+</span><span id="__span-19-60"><a id="__codelineno-19-60" name="__codelineno-19-60"></a><span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">selector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ext</span><span class="o">::</span><span class="n">intel</span><span class="o">::</span><span class="n">fpga_simulator_selector_v</span><span class="p">;</span>
+</span><span id="__span-19-61"><a id="__codelineno-19-61" name="__codelineno-19-61"></a><span class="w">  </span><span class="cp">#elif FPGA_HARDWARE</span>
+</span><span id="__span-19-62"><a id="__codelineno-19-62" name="__codelineno-19-62"></a><span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">selector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ext</span><span class="o">::</span><span class="n">intel</span><span class="o">::</span><span class="n">fpga_selector_v</span><span class="p">;</span>
+</span><span id="__span-19-63"><a id="__codelineno-19-63" name="__codelineno-19-63"></a><span class="w">  </span><span class="cp">#elif FPGA_EMULATOR</span>
+</span><span id="__span-19-64"><a id="__codelineno-19-64" name="__codelineno-19-64"></a><span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">selector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ext</span><span class="o">::</span><span class="n">intel</span><span class="o">::</span><span class="n">fpga_emulator_selector_v</span><span class="p">;</span>
+</span><span id="__span-19-65"><a id="__codelineno-19-65" name="__codelineno-19-65"></a><span class="w">  </span><span class="cp">#else </span>
+</span><span id="__span-19-66"><a id="__codelineno-19-66" name="__codelineno-19-66"></a><span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">selector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sycl</span><span class="o">::</span><span class="n">cpu_selector_v</span><span class="p">;</span>
+</span><span id="__span-19-67"><a id="__codelineno-19-67" name="__codelineno-19-67"></a><span class="w">  </span><span class="cp">#endif</span>
+</span><span id="__span-19-68"><a id="__codelineno-19-68" name="__codelineno-19-68"></a>
+</span><span id="__span-19-69"><a id="__codelineno-19-69" name="__codelineno-19-69"></a><span class="w">  </span><span class="n">property_list</span><span class="w"> </span><span class="n">q_prop</span><span class="p">{</span><span class="n">property</span><span class="o">::</span><span class="n">queue</span><span class="o">::</span><span class="n">in_order</span><span class="p">()};</span>
+</span><span id="__span-19-70"><a id="__codelineno-19-70" name="__codelineno-19-70"></a><span class="w">  </span><span class="n">queue</span><span class="w"> </span><span class="n">myQueue</span><span class="p">{</span><span class="n">selector</span><span class="p">,</span><span class="n">q_prop</span><span class="p">};</span>
+</span><span id="__span-19-71"><a id="__codelineno-19-71" name="__codelineno-19-71"></a>
+</span><span id="__span-19-72"><a id="__codelineno-19-72" name="__codelineno-19-72"></a><span class="w">  </span><span class="c1">// Start MPI.</span>
+</span><span id="__span-19-73"><a id="__codelineno-19-73" name="__codelineno-19-73"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">MPI_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MPI_SUCCESS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-74"><a id="__codelineno-19-74" name="__codelineno-19-74"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Failed to initialize MPI</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-19-75"><a id="__codelineno-19-75" name="__codelineno-19-75"></a><span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
+</span><span id="__span-19-76"><a id="__codelineno-19-76" name="__codelineno-19-76"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-19-77"><a id="__codelineno-19-77" name="__codelineno-19-77"></a>
+</span><span id="__span-19-78"><a id="__codelineno-19-78" name="__codelineno-19-78"></a><span class="w">  </span><span class="c1">// Create the communicator, and retrieve the number of MPI ranks.</span>
+</span><span id="__span-19-79"><a id="__codelineno-19-79" name="__codelineno-19-79"></a><span class="w">  </span><span class="n">MPI_Comm_size</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">num_procs</span><span class="p">);</span>
+</span><span id="__span-19-80"><a id="__codelineno-19-80" name="__codelineno-19-80"></a>
+</span><span id="__span-19-81"><a id="__codelineno-19-81" name="__codelineno-19-81"></a><span class="w">  </span><span class="c1">// Determine the rank number.</span>
+</span><span id="__span-19-82"><a id="__codelineno-19-82" name="__codelineno-19-82"></a><span class="w">  </span><span class="n">MPI_Comm_rank</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">id</span><span class="p">);</span>
+</span><span id="__span-19-83"><a id="__codelineno-19-83" name="__codelineno-19-83"></a>
+</span><span id="__span-19-84"><a id="__codelineno-19-84" name="__codelineno-19-84"></a><span class="w">  </span><span class="c1">// Get the machine name.</span>
+</span><span id="__span-19-85"><a id="__codelineno-19-85" name="__codelineno-19-85"></a><span class="w">  </span><span class="n">MPI_Get_processor_name</span><span class="p">(</span><span class="n">machine_name</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name_len</span><span class="p">);</span>
+</span><span id="__span-19-86"><a id="__codelineno-19-86" name="__codelineno-19-86"></a>
+</span><span id="__span-19-87"><a id="__codelineno-19-87" name="__codelineno-19-87"></a><span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">master</span><span class="p">)</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MPI_Wtime</span><span class="p">();</span>
+</span><span id="__span-19-88"><a id="__codelineno-19-88" name="__codelineno-19-88"></a>
+</span><span id="__span-19-89"><a id="__codelineno-19-89" name="__codelineno-19-89"></a><span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Rank #&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; runs on: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">machine_name</span>
+</span><span id="__span-19-90"><a id="__codelineno-19-90" name="__codelineno-19-90"></a><span class="w">            </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, uses device: &quot;</span>
+</span><span id="__span-19-91"><a id="__codelineno-19-91" name="__codelineno-19-91"></a><span class="w">            </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">myQueue</span><span class="p">.</span><span class="n">get_device</span><span class="p">().</span><span class="n">get_info</span><span class="o">&lt;</span><span class="n">info</span><span class="o">::</span><span class="n">device</span><span class="o">::</span><span class="n">name</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-19-92"><a id="__codelineno-19-92" name="__codelineno-19-92"></a>
+</span><span id="__span-19-93"><a id="__codelineno-19-93" name="__codelineno-19-93"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num_step_per_rank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num_steps</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">num_procs</span><span class="p">;</span>
+</span><span id="__span-19-94"><a id="__codelineno-19-94" name="__codelineno-19-94"></a><span class="w">  </span><span class="kt">double</span><span class="o">*</span><span class="w"> </span><span class="n">results_per_rank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">[</span><span class="n">num_step_per_rank</span><span class="p">];</span>
+</span><span id="__span-19-95"><a id="__codelineno-19-95" name="__codelineno-19-95"></a>
+</span><span id="__span-19-96"><a id="__codelineno-19-96" name="__codelineno-19-96"></a><span class="w">  </span><span class="c1">// Initialize an array to store a partial result per rank.</span>
+</span><span id="__span-19-97"><a id="__codelineno-19-97" name="__codelineno-19-97"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">num_step_per_rank</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">results_per_rank</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+</span><span id="__span-19-98"><a id="__codelineno-19-98" name="__codelineno-19-98"></a>
+</span><span id="__span-19-99"><a id="__codelineno-19-99" name="__codelineno-19-99"></a><span class="w">  </span><span class="c1">// Calculate the Pi number partially by multiple MPI ranks.</span>
+</span><span id="__span-19-100"><a id="__codelineno-19-100" name="__codelineno-19-100"></a><span class="w">  </span><span class="n">mpi_native</span><span class="p">(</span><span class="n">results_per_rank</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">num_procs</span><span class="p">,</span><span class="w"> </span><span class="n">num_steps</span><span class="p">,</span><span class="w"> </span><span class="n">myQueue</span><span class="p">);</span>
+</span><span id="__span-19-101"><a id="__codelineno-19-101" name="__codelineno-19-101"></a>
+</span><span id="__span-19-102"><a id="__codelineno-19-102" name="__codelineno-19-102"></a><span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">local_sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+</span><span id="__span-19-103"><a id="__codelineno-19-103" name="__codelineno-19-103"></a><span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">num_step_per_rank</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span id="__span-19-104"><a id="__codelineno-19-104" name="__codelineno-19-104"></a><span class="w">    </span><span class="n">local_sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">results_per_rank</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span><span id="__span-19-105"><a id="__codelineno-19-105" name="__codelineno-19-105"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-19-106"><a id="__codelineno-19-106" name="__codelineno-19-106"></a>
+</span><span id="__span-19-107"><a id="__codelineno-19-107" name="__codelineno-19-107"></a><span class="w">  </span><span class="c1">// Master rank performs a reduce operation to get the sum of all partial Pi.</span>
+</span><span id="__span-19-108"><a id="__codelineno-19-108" name="__codelineno-19-108"></a><span class="w">  </span><span class="n">MPI_Reduce</span><span class="p">(</span><span class="o">&amp;</span><span class="n">local_sum</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pi</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_SUM</span><span class="p">,</span><span class="w"> </span><span class="n">master</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_COMM_WORLD</span><span class="p">);</span>
+</span><span id="__span-19-109"><a id="__codelineno-19-109" name="__codelineno-19-109"></a>
+</span><span id="__span-19-110"><a id="__codelineno-19-110" name="__codelineno-19-110"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">master</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-111"><a id="__codelineno-19-111" name="__codelineno-19-111"></a><span class="w">    </span><span class="n">t2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MPI_Wtime</span><span class="p">();</span><span class="w"> </span>
+</span><span id="__span-19-112"><a id="__codelineno-19-112" name="__codelineno-19-112"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;mpi native:</span><span class="se">\t\t</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-19-113"><a id="__codelineno-19-113" name="__codelineno-19-113"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">setprecision</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;PI =&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-19-114"><a id="__codelineno-19-114" name="__codelineno-19-114"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Elapsed time is &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">t2</span><span class="o">-</span><span class="n">t1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-19-115"><a id="__codelineno-19-115" name="__codelineno-19-115"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-19-116"><a id="__codelineno-19-116" name="__codelineno-19-116"></a>
+</span><span id="__span-19-117"><a id="__codelineno-19-117" name="__codelineno-19-117"></a><span class="w">  </span><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">results_per_rank</span><span class="p">;</span>
+</span><span id="__span-19-118"><a id="__codelineno-19-118" name="__codelineno-19-118"></a>
+</span><span id="__span-19-119"><a id="__codelineno-19-119" name="__codelineno-19-119"></a><span class="w">  </span><span class="n">MPI_Finalize</span><span class="p">();</span>
+</span><span id="__span-19-120"><a id="__codelineno-19-120" name="__codelineno-19-120"></a>
+</span><span id="__span-19-121"><a id="__codelineno-19-121" name="__codelineno-19-121"></a><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">sycl</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-122"><a id="__codelineno-19-122" name="__codelineno-19-122"></a><span class="w">    </span><span class="c1">// Catches exceptions in the host code.</span>
+</span><span id="__span-19-123"><a id="__codelineno-19-123" name="__codelineno-19-123"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Caught a SYCL host exception:</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-19-124"><a id="__codelineno-19-124" name="__codelineno-19-124"></a>
+</span><span id="__span-19-125"><a id="__codelineno-19-125" name="__codelineno-19-125"></a><span class="w">    </span><span class="c1">// Most likely the runtime couldn&#39;t find FPGA hardware!</span>
+</span><span id="__span-19-126"><a id="__codelineno-19-126" name="__codelineno-19-126"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">code</span><span class="p">().</span><span class="n">value</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CL_DEVICE_NOT_FOUND</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-127"><a id="__codelineno-19-127" name="__codelineno-19-127"></a><span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;If you are targeting an FPGA, please ensure that your &quot;</span>
+</span><span id="__span-19-128"><a id="__codelineno-19-128" name="__codelineno-19-128"></a><span class="w">                   </span><span class="s">&quot;system has a correctly configured FPGA board.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-19-129"><a id="__codelineno-19-129" name="__codelineno-19-129"></a><span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Run sys_check in the oneAPI root directory to verify.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-19-130"><a id="__codelineno-19-130" name="__codelineno-19-130"></a><span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;If you are targeting the FPGA emulator, compile with &quot;</span>
+</span><span id="__span-19-131"><a id="__codelineno-19-131" name="__codelineno-19-131"></a><span class="w">                   </span><span class="s">&quot;-DFPGA_EMULATOR.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-19-132"><a id="__codelineno-19-132" name="__codelineno-19-132"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-19-133"><a id="__codelineno-19-133" name="__codelineno-19-133"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">terminate</span><span class="p">();</span>
+</span><span id="__span-19-134"><a id="__codelineno-19-134" name="__codelineno-19-134"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-19-135"><a id="__codelineno-19-135" name="__codelineno-19-135"></a>
+</span><span id="__span-19-136"><a id="__codelineno-19-136" name="__codelineno-19-136"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-19-137"><a id="__codelineno-19-137" name="__codelineno-19-137"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<u> Output </u>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Rank<span class="w"> </span><span class="c1">#3 runs on: mel3014, uses device: p520_hpc_m210h_g3x16 : BittWare Stratix 10 MX OpenCL platform (aclbitt_s10mx_pcie0)</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>Rank<span class="w"> </span><span class="c1">#0 runs on: mel3001, uses device: p520_hpc_m210h_g3x16 : BittWare Stratix 10 MX OpenCL platform (aclbitt_s10mx_pcie0)</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>Rank<span class="w"> </span><span class="c1">#4 runs on: mel3017, uses device: p520_hpc_m210h_g3x16 : BittWare Stratix 10 MX OpenCL platform (aclbitt_s10mx_pcie0)</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>Rank<span class="w"> </span><span class="c1">#2 runs on: mel3013, uses device: p520_hpc_m210h_g3x16 : BittWare Stratix 10 MX OpenCL platform (aclbitt_s10mx_pcie0)</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>Rank<span class="w"> </span><span class="c1">#1 runs on: mel3010, uses device: p520_hpc_m210h_g3x16 : BittWare Stratix 10 MX OpenCL platform (aclbitt_s10mx_pcie0)</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>mpi<span class="w"> </span>native:<span class="w">             </span><span class="nv">PI</span><span class="w"> </span><span class="o">=</span><span class="m">3</span>.141593654
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>Elapsed<span class="w"> </span><span class="nb">time</span><span class="w"> </span>is<span class="w"> </span><span class="m">9</span>.703053059
+</span></code></pre></div></p>
+</div>
 
 
 
@@ -2408,7 +3029,7 @@ C[TaskC] --&gt; D[TaskD];</code></pre>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 18, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 15, 2024</span>
   </span>
 
     
