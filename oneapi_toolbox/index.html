@@ -664,7 +664,7 @@ $$</p>
 <div class="admonition info">
 <p class="admonition-title">Building and the code</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>build-rotation-gates<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build-rotation-gates
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>cmake<span class="w"> </span>..<span class="w"> </span>-DUSER_FLAGS<span class="o">=</span><span class="s2">&quot;-lGL -lGLU -lglut&quot;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>cmake<span class="w"> </span>..<span class="w"> </span>-DBUILD<span class="o">=</span>U<span class="w"> </span>-DUSER_FLAGS<span class="o">=</span><span class="s2">&quot;-lGL -lGLU -lglut&quot;</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>make<span class="w"> </span>fpga
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="si">${</span><span class="nv">JEMALLOC_PRELOAD</span><span class="si">}</span><span class="w"> </span>./quantum.fpga
 </span></code></pre></div>

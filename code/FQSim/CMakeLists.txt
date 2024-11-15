@@ -19,7 +19,29 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 ###############################################################################
 ### Customize these build variables
 ###############################################################################
-set(SOURCE_FILES src/bernstein-vazirani.cpp src/kernels.cpp)
+
+set(BUILD_TYPES "H" "Z" "U" "BZ")
+set(BUILD "BZ" CACHE STRING "Type of gate to be build")
+set_property(CACHE BUILD PROPERTY STRINGS ${BUILD_TYPES})
+
+if(${BUILD} STREQUAL "H")
+    message(STATUS "Building the H gate example")
+    set(SOURCE_FILES src/test_h_gate.cpp src/kernels.cpp)
+
+elseif(${BUILD} STREQUAL "Z")
+    message(STATUS "Building the Z gate example")
+    set(SOURCE_FILES src/test_z_gate.cpp src/kernels.cpp)
+
+elseif(${BUILD} STREQUAL "U")
+    message(STATUS "Building the U gate example")
+    set(SOURCE_FILES src/test_rxryrz.cpp  src/blochSphere.cpp  src/kernels.cpp)
+
+else()
+    message(STATUS "Building the Bernstein-Vazirani example")
+    set(SOURCE_FILES src/bernstein-vazirani.cpp src/kernels.cpp)
+
+endif()
+
 set(FPGA_IMAGE_DIR fpga_image)
 set(TARGET_NAME quantum)
 
@@ -37,14 +59,14 @@ endif()
 
 # Use cmake -DUSER_FPGA_FLAGS=<flags> to set extra flags for FPGA backend
 # compilation. 
-set(USER_FPGA_FLAGS ${USER_FPGA_FLAGS})
+set(USER_FPGA_FLAGS -Xsfast-compile -Xsparallel=128 ${USER_FPGA_FLAGS})
 
 # Use cmake -DUSER_FLAGS=<flags> to set extra flags for general compilation.
 set(USER_FLAGS ${USER_FLAGS})
 
 # Use cmake -DUSER_INCLUDE_PATHS=<paths> to set extra paths for general
 # compilation.
-set(USER_INCLUDE_PATHS ../../../include;${USER_INCLUDE_PATHS})
+set(USER_INCLUDE_PATHS ../../../include;./include;${USER_INCLUDE_PATHS})
 
 ###############################################################################
 ### no changes after here
@@ -113,9 +135,9 @@ set(REPORT_COMPILE_FLAGS -DFPGA_HARDWARE)
 set(REPORT_LINK_FLAGS -Xsv -Xshardware -Xsboard=${FPGA_DEVICE} ${USER_FPGA_FLAGS} -fsycl-link=early)
 set(SIMULATOR_COMPILE_FLAGS -Xssimulation -DFPGA_SIMULATOR)
 set(SIMULATOR_LINK_FLAGS -Xssimulation -Xsghdl -Xsboard=${FPGA_DEVICE} ${USER_FPGA_FLAGS} -reuse-exe=${CMAKE_BINARY_DIR}/${SIMULATOR_OUTPUT_NAME})
-set(FPGA_COMPILE_FLAGS -DFPGA_HARDWARE)
+set(FPGA_COMPILE_FLAGS -DFPGA_HARDWARE ${USER_FLAGS} ${USER_FPGA_FLAGS})
 #set(FPGA_LINK_FLAGS -Xsv -Xshardware -Xsboard=${FPGA_DEVICE} ${USER_FPGA_FLAGS} -reuse-exe=${CMAKE_BINARY_DIR}/${FPGA_OUTPUT_NAME})
-set(FPGA_LINK_FLAGS -Xsv -Xshardware -Xsboard=${FPGA_DEVICE} ${USER_FPGA_FLAGS} -reuse-exe=${PROJECT_SOURCE_DIR}/${FPGA_IMAGE_DIR}/${FPGA_OUTPUT_NAME})
+set(FPGA_LINK_FLAGS -Xsv -Xshardware -Xsboard=${FPGA_DEVICE} ${USER_FLAGS} ${USER_FPGA_FLAGS} -reuse-exe=${PROJECT_SOURCE_DIR}/${FPGA_IMAGE_DIR}/${FPGA_OUTPUT_NAME})
 
 ###############################################################################
 ### FPGA Emulator
