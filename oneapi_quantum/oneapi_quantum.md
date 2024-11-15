@@ -36,33 +36,26 @@ $>tree -L 2
 ├── CMakeLists.txt
 ├── fpga_image
 │   └── quantum.fpga
-├── src
-│   ├── bernstein-vazirani.cpp
-│   ├── blochSphere.cpp
+├── include
 │   ├── blochSphere.hpp
-│   ├── kernels.cpp
-│   ├── kernels.hpp
-│   ├── test_h_gate.cpp
-│   ├── test_rxryrz.cpp
-│   └── test_z_gate.cpp
-└── src-solution
+│   └── kernels.hpp
+└── src
     ├── bernstein-vazirani.cpp
     ├── blochSphere.cpp
-    ├── blochSphere.hpp
     ├── kernels.cpp
-    ├── kernels.hpp
     ├── test_h_gate.cpp
     ├── test_rxryrz.cpp
     └── test_z_gate.cpp
 ```
 
 - **fpga_image** : contains the fpga image build prior to the workshop training to avoid waiting hardware synthesis. Indeed, the offline compiler will extract the bitstream file `aocx` and reuse it if and only if the device code did not change
-- **src** : All files contain blank code that we are going to fill step by step
+- **include** :
+    * **kernel.hpp**: header file containing the signature of function.
+    * **blochSphere.hpp**: header file containing the signature of function to draw an OpenGL BlockSphere.
+- **src** :  
     * **bernstein-vazirani.cpp**: the source file with the Bernstein-Vazirani circuit.
     * **blochSphere.cpp**: source file containing all code to draw an OpenGL BlockSphere.
-    * **blochSphere.hpp**: header file containing the signature of function to draw an OpenGL BlockSphere.
     * **kernel.cpp**: source file containing all code for the gates.
-    * **kernel.hpp**: header file containing the signature of function.
     * **test_h_gate.cpp**: source file for the example testing the h gate.
     * **test_rxryrz.cpp**: test example for the 3 rotation gates rx, ry and rz.
     * **test_z_gate.cpp**: source file for the example testing the z gate.
