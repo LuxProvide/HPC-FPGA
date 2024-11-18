@@ -18,7 +18,7 @@
         <link rel="prev" href="../writing/">
       
       
-        <link rel="next" href="../oneapi_toolbox/">
+        <link rel="next" href="../optimization/">
       
       
       <link rel="icon" href="../assets/favicon.png">
@@ -514,27 +514,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../oneapi_toolbox/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Creating a Quantum toolbox
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -591,6 +570,27 @@
   
   <span class="md-ellipsis">
     Optimizing SYCL programs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oneapi_toolbox/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating a Quantum toolbox
   </span>
   
 
@@ -733,8 +733,8 @@
   <h1>Developing Quantum Circuit</h1>
 
 <ul>
-<li>We will develop the quantum circuit we have seen previously, i.e.,  Bernstein-Varizani to search an hidden element</li>
-<li>We will need to code the Pauli H and Z gates </li>
+<li>We will develop a simple and famous quantum circuit, i.e., Bernstein-Varizani to search an hidden element</li>
+<li>We will need the two Pauli H and Z gates </li>
 <li>We will also need a function to measure (sample) from the distribution obtained using the state vector amplitudes</li>
 </ul>
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
@@ -1067,8 +1067,8 @@
 </span><span id="__span-6-61"><a id="__codelineno-6-61" name="__codelineno-6-61"></a><span class="hll"><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
 </span></span><span id="__span-6-62"><a id="__codelineno-6-62" name="__codelineno-6-62"></a><span class="hll"><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
 </span></span><span id="__span-6-63"><a id="__codelineno-6-63" name="__codelineno-6-63"></a><span class="hll"><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
-</span></span><span id="__span-6-64"><a id="__codelineno-6-64" name="__codelineno-6-64"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="p">(</span><span class="mf">-1.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
-</span><span id="__span-6-65"><a id="__codelineno-6-65" name="__codelineno-6-65"></a><span class="w">    </span><span class="n">apply_gate</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="n">stateVector_d</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">numQubits</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">target</span><span class="p">,</span><span class="n">A</span><span class="p">,</span>
+</span></span><span id="__span-6-64"><a id="__codelineno-6-64" name="__codelineno-6-64"></a><span class="hll"><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="p">(</span><span class="mf">-1.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
+</span></span><span id="__span-6-65"><a id="__codelineno-6-65" name="__codelineno-6-65"></a><span class="w">    </span><span class="n">apply_gate</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="n">stateVector_d</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">numQubits</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">target</span><span class="p">,</span><span class="n">A</span><span class="p">,</span>
 </span><span id="__span-6-66"><a id="__codelineno-6-66" name="__codelineno-6-66"></a><span class="w">                                                                </span><span class="n">B</span><span class="p">,</span>
 </span><span id="__span-6-67"><a id="__codelineno-6-67" name="__codelineno-6-67"></a><span class="w">                                                                </span><span class="n">C</span><span class="p">,</span>
 </span><span id="__span-6-68"><a id="__codelineno-6-68" name="__codelineno-6-68"></a><span class="w">                                                                </span><span class="n">D</span><span class="p">);</span>
@@ -1375,68 +1375,51 @@ I \otimes U \otimes I|\psi_1 \psi_2 \psi_3 \rangle &amp; =  |\psi_1 \rangle &amp
 </ul>
 <div class="admonition tig">
 <p class="admonition-title">Sampling the possible outcomes</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Question</label><label for="__tabbed_1_2">Solution</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
 <ul>
 <li>Using the <code class="language-cpp highlight"><span class="kt">void</span><span class="w"> </span><span class="n">get_proba</span><span class="p">(...)</span></code> function, fill the body of the <code class="language-cpp highlight"><span class="kt">void</span><span class="w"> </span><span class="n">measure</span><span class="p">(...)</span></code> function</li>
-<li>You can use the standard library function <code class="language-cpp highlight"><span class="n">std</span><span class="o">::</span><span class="n">discrete_distribution</span></code> (see below)
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">std</span><span class="o">::</span><span class="n">random_device</span><span class="w"> </span><span class="n">rd</span><span class="p">;</span><span class="w">                          </span><span class="c1">// Obtain a random number from hardware</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">std</span><span class="o">::</span><span class="n">mt19937</span><span class="w"> </span><span class="nf">gen</span><span class="p">(</span><span class="n">rd</span><span class="p">());</span><span class="w">                         </span><span class="c1">// Seed the generator</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">std</span><span class="o">::</span><span class="n">discrete_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">probaVector</span><span class="p">,</span><span class="w"> </span><span class="n">probaVector</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
-</span></code></pre></div></li>
-</ul>
-</div>
-<div class="tabbed-block">
-<ul>
+<li>We can use the standard library function <code class="language-cpp highlight"><span class="n">std</span><span class="o">::</span><span class="n">discrete_distribution</span></code> (see below)</li>
 <li>Add the following code in the <code class="language-cpp highlight"><span class="kt">void</span><span class="w"> </span><span class="n">measure</span><span class="p">(...)</span></code> function body
-<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-10-10">10</a></span>
-<span class="normal"><a href="#__codelineno-10-11">11</a></span>
-<span class="normal"><a href="#__codelineno-10-12">12</a></span>
-<span class="normal"><a href="#__codelineno-10-13">13</a></span>
-<span class="normal"><a href="#__codelineno-10-14">14</a></span>
-<span class="normal"><a href="#__codelineno-10-15">15</a></span>
-<span class="normal"><a href="#__codelineno-10-16">16</a></span>
-<span class="normal"><a href="#__codelineno-10-17">17</a></span>
-<span class="normal"><a href="#__codelineno-10-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">numQubits</span><span class="p">);</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">probaVector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">float</span><span class="p">[</span><span class="n">size</span><span class="p">];</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">probaVector_d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc_device</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="n">queue</span><span class="p">);</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w"> </span><span class="n">get_proba</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="n">stateVector_d</span><span class="p">,</span><span class="n">size</span><span class="p">,</span><span class="n">probaVector_d</span><span class="p">);</span><span class="w"> </span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="w"> </span><span class="n">queue</span><span class="p">.</span><span class="n">memcpy</span><span class="p">(</span><span class="n">probaVector</span><span class="p">,</span><span class="w"> </span><span class="n">probaVector_d</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">)).</span><span class="n">wait</span><span class="p">();</span>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">random_device</span><span class="w"> </span><span class="n">rd</span><span class="p">;</span><span class="w">                          </span><span class="c1">// Obtain a random number from hardware</span>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">mt19937</span><span class="w"> </span><span class="nf">gen</span><span class="p">(</span><span class="n">rd</span><span class="p">());</span><span class="w">                         </span><span class="c1">// Seed the generator</span>
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">discrete_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">probaVector</span><span class="p">,</span><span class="w"> </span><span class="n">probaVector</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
-</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">arr</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
-</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="w"> </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">samples</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">gen</span><span class="p">);</span>
-</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="w">     </span><span class="n">arr</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
-</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Quantum State Probabilities:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15"></a><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16"></a><span class="w">     </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;State &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="n">toBinary</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">numQubits</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17"></a><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18"></a><span class="w"> </span><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">probaVector</span><span class="p">;</span>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span>
+<span class="normal"><a href="#__codelineno-9-15">15</a></span>
+<span class="normal"><a href="#__codelineno-9-16">16</a></span>
+<span class="normal"><a href="#__codelineno-9-17">17</a></span>
+<span class="normal"><a href="#__codelineno-9-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">numQubits</span><span class="p">);</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">probaVector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">float</span><span class="p">[</span><span class="n">size</span><span class="p">];</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">probaVector_d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc_device</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="n">queue</span><span class="p">);</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w"> </span><span class="n">get_proba</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="n">stateVector_d</span><span class="p">,</span><span class="n">size</span><span class="p">,</span><span class="n">probaVector_d</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w"> </span><span class="n">queue</span><span class="p">.</span><span class="n">memcpy</span><span class="p">(</span><span class="n">probaVector</span><span class="p">,</span><span class="w"> </span><span class="n">probaVector_d</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">)).</span><span class="n">wait</span><span class="p">();</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">random_device</span><span class="w"> </span><span class="n">rd</span><span class="p">;</span><span class="w">                          </span><span class="c1">// Obtain a random number from hardware</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">mt19937</span><span class="w"> </span><span class="nf">gen</span><span class="p">(</span><span class="n">rd</span><span class="p">());</span><span class="w">                         </span><span class="c1">// Seed the generator</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">discrete_distribution</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">probaVector</span><span class="p">,</span><span class="w"> </span><span class="n">probaVector</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">arr</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="w"> </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">samples</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">gen</span><span class="p">);</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="w">     </span><span class="n">arr</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Quantum State Probabilities:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="w">     </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;State &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="n">toBinary</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">numQubits</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17"></a><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18"></a><span class="w"> </span><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">probaVector</span><span class="p">;</span>
 </span></code></pre></div></td></tr></table></div></li>
 </ul>
-</div>
-</div>
-</div>
 </div>
 <h2 id="implementing-the-two-pauli-h-and-z-gates">Implementing the two Pauli H and Z gates<a class="headerlink" href="#implementing-the-two-pauli-h-and-z-gates" title="Permanent link">&para;</a></h2>
 <div class="admonition tig">
 <p class="admonition-title">Pauli H gate</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Question</label><label for="__tabbed_2_2">Solution</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
 <ul>
 <li>The Hadamard gate puts qubits in <strong>superposition</strong></li>
 <li>It transform the basis state:<ul>
@@ -1447,25 +1430,36 @@ I \otimes U \otimes I|\psi_1 \psi_2 \psi_3 \rangle &amp; =  |\psi_1 \rangle &amp
 </ul>
 <p><div align="center"> <span class="arithmatex">\(\begin{aligned} H &amp; = \frac{1}{\sqrt{2}}\begin{pmatrix}1 &amp; 1 \\1 &amp; -1 \end{pmatrix}\end{aligned}\)</span> </div></p>
 <ul>
-<li>
-<p>Fill the body of the <code class="language-cpp highlight"><span class="kt">void</span><span class="w"> </span><span class="n">h</span><span class="p">(...)</span></code> function body</p>
-</li>
-<li>
-<p>To test your gate, set the variable <code>SOURCE_FILES</code> as follows <code>set(SOURCE_FILES src/test_h_gate.cpp src/kernels.cpp)</code> in the CMakeLists.txt file</p>
-</li>
-</ul>
-<div class="admonition info">
-<p class="admonition-title">Building and the code</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>mkdir<span class="w"> </span>build-test-h-gate<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build-test-h-gate
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>cmake<span class="w"> </span>..
+<li>We add the following code in the <code class="language-cpp highlight"><span class="kt">void</span><span class="w"> </span><span class="n">h</span><span class="p">(...)</span></code> function body
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span>
+<span class="normal"><a href="#__codelineno-10-7">7</a></span>
+<span class="normal"><a href="#__codelineno-10-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="p">(</span><span class="mf">-1.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="n">apply_gate</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="n">stateVector_d</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">numQubits</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">target</span><span class="p">,</span><span class="n">A</span><span class="o">/</span><span class="n">std</span><span class="o">::</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0f</span><span class="p">),</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="w">                                                          </span><span class="n">B</span><span class="o">/</span><span class="n">std</span><span class="o">::</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0f</span><span class="p">),</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="w">                                                          </span><span class="n">C</span><span class="o">/</span><span class="n">std</span><span class="o">::</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0f</span><span class="p">),</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="w">                                                          </span><span class="n">D</span><span class="o">/</span><span class="n">std</span><span class="o">::</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0f</span><span class="p">));</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-bash highlight"><span class="filename">Building and testing</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>mkdir<span class="w"> </span>build-BV<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build-BV
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>cmake<span class="w"> </span>-DBUILD<span class="o">=</span>H<span class="w"> </span>..
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>make<span class="w"> </span>fpga
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="si">${</span><span class="nv">JEMALLOC_PRELOAD</span><span class="si">}</span><span class="w"> </span>./quantum.fpga
-</span></code></pre></div>
+</span></code></pre></div></li>
+</ul>
 </div>
-</div>
-<div class="tabbed-block">
+<div class="admonition tig">
+<p class="admonition-title">Pauli Z gate</p>
+<p>The Pauli-Z gate is a single-qubit rotation through <span class="arithmatex">\(\pi\)</span> radians around the z-axis.
+<div align="center"> <span class="arithmatex">\(\begin{aligned} Z &amp; = \begin{pmatrix}1 &amp; 0 \\0 &amp; -1 \end{pmatrix}\end{aligned}\)</span> </div></p>
 <ul>
-<li>Add the following code in the <code class="language-cpp highlight"><span class="kt">void</span><span class="w"> </span><span class="n">h</span><span class="p">(...)</span></code> function body
+<li>We add the following code in the <code class="language-cpp highlight"><span class="kt">void</span><span class="w"> </span><span class="n">z</span><span class="p">(...)</span></code> function body
 <div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
 <span class="normal"><a href="#__codelineno-12-2">2</a></span>
 <span class="normal"><a href="#__codelineno-12-3">3</a></span>
@@ -1474,74 +1468,26 @@ I \otimes U \otimes I|\psi_1 \psi_2 \psi_3 \rangle &amp; =  |\psi_1 \rangle &amp
 <span class="normal"><a href="#__codelineno-12-6">6</a></span>
 <span class="normal"><a href="#__codelineno-12-7">7</a></span>
 <span class="normal"><a href="#__codelineno-12-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="p">(</span><span class="mf">-1.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="n">apply_gate</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="n">stateVector_d</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">numQubits</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">target</span><span class="p">,</span><span class="n">A</span><span class="o">/</span><span class="n">std</span><span class="o">::</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0f</span><span class="p">),</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">                                                          </span><span class="n">B</span><span class="o">/</span><span class="n">std</span><span class="o">::</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0f</span><span class="p">),</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="w">                                                          </span><span class="n">C</span><span class="o">/</span><span class="n">std</span><span class="o">::</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0f</span><span class="p">),</span>
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="w">                                                          </span><span class="n">D</span><span class="o">/</span><span class="n">std</span><span class="o">::</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0f</span><span class="p">));</span>
-</span></code></pre></div></td></tr></table></div></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="admonition tig">
-<p class="admonition-title">Pauli Z gate</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Description</label><label for="__tabbed_3_2">Solution</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>The Pauli-Z gate is a single-qubit rotation through <span class="arithmatex">\(\pi\)</span> radians around the z-axis.
-<div align="center"> <span class="arithmatex">\(\begin{aligned} Z &amp; = \begin{pmatrix}1 &amp; 0 \\0 &amp; -1 \end{pmatrix}\end{aligned}\)</span> </div></p>
-<ul>
-<li>
-<p>Fill the body of the <code class="language-cpp highlight"><span class="kt">void</span><span class="w"> </span><span class="n">z</span><span class="p">(...)</span></code> function body</p>
-</li>
-<li>
-<p>To test your gate, set the variable <code>SOURCE_FILES</code> as follows <code>set(SOURCE_FILES src/test_z_gate.cpp src/kernels.cpp)</code> in the CMakeLists.txt file</p>
-</li>
-</ul>
-<div class="admonition info">
-<p class="admonition-title">Building and the code</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>mkdir<span class="w"> </span>build-test-z-gate<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build-test-z-gate
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>cmake<span class="w"> </span>..
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="n">apply_gate</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="n">stateVector_d</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">numQubits</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">target</span><span class="p">,</span><span class="n">A</span><span class="p">,</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">                                                            </span><span class="n">B</span><span class="p">,</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="w">                                                            </span><span class="n">C</span><span class="p">,</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="w">                                                            </span><span class="n">D</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-bash highlight"><span class="filename">Building and testing</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>mkdir<span class="w"> </span>build-BV<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build-BV
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>cmake<span class="w"> </span>-DBUILD<span class="o">=</span>Z<span class="w"> </span>..
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>make<span class="w"> </span>fpga
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="si">${</span><span class="nv">JEMALLOC_PRELOAD</span><span class="si">}</span><span class="w"> </span>./quantum.fpga
-</span></code></pre></div>
-</div>
-</div>
-<div class="tabbed-block">
-<ul>
-<li>Add the following code in the <code class="language-cpp highlight"><span class="kt">void</span><span class="w"> </span><span class="n">z</span><span class="p">(...)</span></code> function body
-<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
-<span class="normal"><a href="#__codelineno-14-2">2</a></span>
-<span class="normal"><a href="#__codelineno-14-3">3</a></span>
-<span class="normal"><a href="#__codelineno-14-4">4</a></span>
-<span class="normal"><a href="#__codelineno-14-5">5</a></span>
-<span class="normal"><a href="#__codelineno-14-6">6</a></span>
-<span class="normal"><a href="#__codelineno-14-7">7</a></span>
-<span class="normal"><a href="#__codelineno-14-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="p">(</span><span class="mf">-1.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="n">apply_gate</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="n">stateVector_d</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">numQubits</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">target</span><span class="p">,</span><span class="n">A</span><span class="p">,</span>
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="w">                                                        </span><span class="n">B</span><span class="p">,</span>
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="w">                                                        </span><span class="n">C</span><span class="p">,</span>
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="w">                                                        </span><span class="n">D</span><span class="p">);</span>
-</span></code></pre></div></td></tr></table></div></li>
+</span></code></pre></div></li>
 </ul>
 </div>
-</div>
-</div>
-</div>
 <h2 id="implementing-the-bernstein-varizani-algorithm">Implementing the Bernstein-Varizani algorithm<a class="headerlink" href="#implementing-the-bernstein-varizani-algorithm" title="Permanent link">&para;</a></h2>
-<div class="admonition tig">
-<p class="admonition-title">Let's put everything together</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Question</label><label for="__tabbed_4_2">Solution</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
 <ul>
+<li>
+<p>Let's put everything together:</p>
+</li>
 <li>
 <p>Fill the body of the <code class="language-cpp highlight"><span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(...)</span></code> function body</p>
 </li>
@@ -1556,196 +1502,180 @@ I \otimes U \otimes I|\psi_1 \psi_2 \psi_3 \rangle &amp; =  |\psi_1 \rangle &amp
 </li>
 </ul>
 <div class="admonition info">
-<p class="admonition-title">Building and the code</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>mkdir<span class="w"> </span>build-BV<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build-BV
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>cmake<span class="w"> </span>..
+<p class="admonition-title"> Implemetation of the SYCL version of Bernstein-Vazirani</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span>
+<span class="normal"><a href="#__codelineno-14-12">12</a></span>
+<span class="normal"><a href="#__codelineno-14-13">13</a></span>
+<span class="normal"><a href="#__codelineno-14-14">14</a></span>
+<span class="normal"><a href="#__codelineno-14-15">15</a></span>
+<span class="normal"><a href="#__codelineno-14-16">16</a></span>
+<span class="normal"><a href="#__codelineno-14-17">17</a></span>
+<span class="normal"><a href="#__codelineno-14-18">18</a></span>
+<span class="normal"><a href="#__codelineno-14-19">19</a></span>
+<span class="normal"><a href="#__codelineno-14-20">20</a></span>
+<span class="normal"><a href="#__codelineno-14-21">21</a></span>
+<span class="normal"><a href="#__codelineno-14-22">22</a></span>
+<span class="normal"><a href="#__codelineno-14-23">23</a></span>
+<span class="normal"><a href="#__codelineno-14-24">24</a></span>
+<span class="normal"><a href="#__codelineno-14-25">25</a></span>
+<span class="normal"><a href="#__codelineno-14-26">26</a></span>
+<span class="normal"><a href="#__codelineno-14-27">27</a></span>
+<span class="normal"><a href="#__codelineno-14-28">28</a></span>
+<span class="normal"><a href="#__codelineno-14-29">29</a></span>
+<span class="normal"><a href="#__codelineno-14-30">30</a></span>
+<span class="normal"><a href="#__codelineno-14-31">31</a></span>
+<span class="normal"><a href="#__codelineno-14-32">32</a></span>
+<span class="normal"><a href="#__codelineno-14-33">33</a></span>
+<span class="normal"><a href="#__codelineno-14-34">34</a></span>
+<span class="normal"><a href="#__codelineno-14-35">35</a></span>
+<span class="normal"><a href="#__codelineno-14-36">36</a></span>
+<span class="normal"><a href="#__codelineno-14-37">37</a></span>
+<span class="normal"><a href="#__codelineno-14-38">38</a></span>
+<span class="normal"><a href="#__codelineno-14-39">39</a></span>
+<span class="normal"><a href="#__codelineno-14-40">40</a></span>
+<span class="normal"><a href="#__codelineno-14-41">41</a></span>
+<span class="normal"><a href="#__codelineno-14-42">42</a></span>
+<span class="normal"><a href="#__codelineno-14-43">43</a></span>
+<span class="normal"><a href="#__codelineno-14-44">44</a></span>
+<span class="normal"><a href="#__codelineno-14-45">45</a></span>
+<span class="normal"><a href="#__codelineno-14-46">46</a></span>
+<span class="normal"><a href="#__codelineno-14-47">47</a></span>
+<span class="normal"><a href="#__codelineno-14-48">48</a></span>
+<span class="normal"><a href="#__codelineno-14-49">49</a></span>
+<span class="normal"><a href="#__codelineno-14-50">50</a></span>
+<span class="normal"><a href="#__codelineno-14-51">51</a></span>
+<span class="normal"><a href="#__codelineno-14-52">52</a></span>
+<span class="normal"><a href="#__codelineno-14-53">53</a></span>
+<span class="normal"><a href="#__codelineno-14-54">54</a></span>
+<span class="normal"><a href="#__codelineno-14-55">55</a></span>
+<span class="normal"><a href="#__codelineno-14-56">56</a></span>
+<span class="normal"><a href="#__codelineno-14-57">57</a></span>
+<span class="normal"><a href="#__codelineno-14-58">58</a></span>
+<span class="normal"><a href="#__codelineno-14-59">59</a></span>
+<span class="normal"><a href="#__codelineno-14-60">60</a></span>
+<span class="normal"><a href="#__codelineno-14-61">61</a></span>
+<span class="normal"><a href="#__codelineno-14-62">62</a></span>
+<span class="normal"><a href="#__codelineno-14-63">63</a></span>
+<span class="normal"><a href="#__codelineno-14-64">64</a></span>
+<span class="normal"><a href="#__codelineno-14-65">65</a></span>
+<span class="normal"><a href="#__codelineno-14-66">66</a></span>
+<span class="normal"><a href="#__codelineno-14-67">67</a></span>
+<span class="normal"><a href="#__codelineno-14-68">68</a></span>
+<span class="normal"><a href="#__codelineno-14-69">69</a></span>
+<span class="normal"><a href="#__codelineno-14-70">70</a></span>
+<span class="normal"><a href="#__codelineno-14-71">71</a></span>
+<span class="normal"><a href="#__codelineno-14-72">72</a></span>
+<span class="normal"><a href="#__codelineno-14-73">73</a></span>
+<span class="normal"><a href="#__codelineno-14-74">74</a></span>
+<span class="normal"><a href="#__codelineno-14-75">75</a></span>
+<span class="normal"><a href="#__codelineno-14-76">76</a></span>
+<span class="normal"><a href="#__codelineno-14-77">77</a></span>
+<span class="normal"><a href="#__codelineno-14-78">78</a></span>
+<span class="normal"><a href="#__codelineno-14-79">79</a></span>
+<span class="normal"><a href="#__codelineno-14-80">80</a></span>
+<span class="normal"><a href="#__codelineno-14-81">81</a></span>
+<span class="normal"><a href="#__codelineno-14-82">82</a></span>
+<span class="normal"><a href="#__codelineno-14-83">83</a></span>
+<span class="normal"><a href="#__codelineno-14-84">84</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="c1">// Sample code Bernstein-Vazirani</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="c1">// oneAPI headers</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sycl/ext/intel/fpga_extensions.hpp&gt;</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sycl/sycl.hpp&gt;</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;kernels.hpp&quot;</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9"></a>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">sycl</span><span class="p">;</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11"></a>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12"></a>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14"></a>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">passed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16"></a><span class="w">    </span><span class="k">try</span><span class="p">{</span>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17"></a>
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18"></a><span class="w">       </span><span class="cp">#if FPGA_SIMULATOR</span>
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19"></a><span class="w">           </span><span class="k">auto</span><span class="w"> </span><span class="n">selector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sycl</span><span class="o">::</span><span class="n">ext</span><span class="o">::</span><span class="n">intel</span><span class="o">::</span><span class="n">fpga_simulator_selector_v</span><span class="p">;</span>
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20"></a><span class="w">       </span><span class="cp">#elif FPGA_HARDWARE</span>
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21"></a><span class="w">           </span><span class="k">auto</span><span class="w"> </span><span class="n">selector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sycl</span><span class="o">::</span><span class="n">ext</span><span class="o">::</span><span class="n">intel</span><span class="o">::</span><span class="n">fpga_selector_v</span><span class="p">;</span>
+</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22"></a><span class="w">       </span><span class="cp">#else  </span><span class="c1">// #if FPGA_EMULATOR</span>
+</span><span id="__span-14-23"><a id="__codelineno-14-23" name="__codelineno-14-23"></a><span class="w">           </span><span class="k">auto</span><span class="w"> </span><span class="n">selector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sycl</span><span class="o">::</span><span class="n">ext</span><span class="o">::</span><span class="n">intel</span><span class="o">::</span><span class="n">fpga_emulator_selector_v</span><span class="p">;</span>
+</span><span id="__span-14-24"><a id="__codelineno-14-24" name="__codelineno-14-24"></a><span class="w">       </span><span class="cp">#endif</span>
+</span><span id="__span-14-25"><a id="__codelineno-14-25" name="__codelineno-14-25"></a>
+</span><span id="__span-14-26"><a id="__codelineno-14-26" name="__codelineno-14-26"></a><span class="w">       </span><span class="c1">// Create a SYCL queue</span>
+</span><span id="__span-14-27"><a id="__codelineno-14-27" name="__codelineno-14-27"></a><span class="w">       </span><span class="n">queue</span><span class="w"> </span><span class="n">queue</span><span class="p">(</span><span class="n">selector</span><span class="p">);</span>
+</span><span id="__span-14-28"><a id="__codelineno-14-28" name="__codelineno-14-28"></a><span class="w">       </span><span class="c1">// make sure the device supports USM host allocations</span>
+</span><span id="__span-14-29"><a id="__codelineno-14-29" name="__codelineno-14-29"></a><span class="w">       </span><span class="k">auto</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queue</span><span class="p">.</span><span class="n">get_device</span><span class="p">();</span>
+</span><span id="__span-14-30"><a id="__codelineno-14-30" name="__codelineno-14-30"></a>
+</span><span id="__span-14-31"><a id="__codelineno-14-31" name="__codelineno-14-31"></a><span class="w">       </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Running on device: &quot;</span>
+</span><span id="__span-14-32"><a id="__codelineno-14-32" name="__codelineno-14-32"></a><span class="w">                 </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">device</span><span class="p">.</span><span class="n">get_info</span><span class="o">&lt;</span><span class="n">sycl</span><span class="o">::</span><span class="n">info</span><span class="o">::</span><span class="n">device</span><span class="o">::</span><span class="n">name</span><span class="o">&gt;</span><span class="p">().</span><span class="n">c_str</span><span class="p">()</span>
+</span><span id="__span-14-33"><a id="__codelineno-14-33" name="__codelineno-14-33"></a><span class="w">                 </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-14-34"><a id="__codelineno-14-34" name="__codelineno-14-34"></a>
+</span><span id="__span-14-35"><a id="__codelineno-14-35" name="__codelineno-14-35"></a>
+</span><span id="__span-14-36"><a id="__codelineno-14-36" name="__codelineno-14-36"></a>
+</span><span id="__span-14-37"><a id="__codelineno-14-37" name="__codelineno-14-37"></a><span class="w">       </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">numQubits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
+</span><span id="__span-14-38"><a id="__codelineno-14-38" name="__codelineno-14-38"></a><span class="w">       </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">numStates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">numQubits</span><span class="p">;</span><span class="w"> </span><span class="c1">// 2^n</span>
+</span><span id="__span-14-39"><a id="__codelineno-14-39" name="__codelineno-14-39"></a>
+</span><span id="__span-14-40"><a id="__codelineno-14-40" name="__codelineno-14-40"></a><span class="w">       </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">hidden</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">101</span><span class="p">;</span><span class="w"> </span><span class="c1">//Hidden integer (1100101)</span>
+</span><span id="__span-14-41"><a id="__codelineno-14-41" name="__codelineno-14-41"></a>
+</span><span id="__span-14-42"><a id="__codelineno-14-42" name="__codelineno-14-42"></a><span class="w">       </span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">stateVector</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">[</span><span class="n">numStates</span><span class="p">];</span>
+</span><span id="__span-14-43"><a id="__codelineno-14-43" name="__codelineno-14-43"></a><span class="w">       </span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">stateVector_d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc_device</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">numStates</span><span class="p">,</span><span class="n">queue</span><span class="p">);</span>
+</span><span id="__span-14-44"><a id="__codelineno-14-44" name="__codelineno-14-44"></a>
+</span><span id="__span-14-45"><a id="__codelineno-14-45" name="__codelineno-14-45"></a><span class="w">       </span><span class="c1">// Initial state |00...00&gt;</span>
+</span><span id="__span-14-46"><a id="__codelineno-14-46" name="__codelineno-14-46"></a><span class="w">       </span><span class="n">stateVector</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">1.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
+</span><span id="__span-14-47"><a id="__codelineno-14-47" name="__codelineno-14-47"></a><span class="w">       </span><span class="n">queue</span><span class="p">.</span><span class="n">memcpy</span><span class="p">(</span><span class="n">stateVector_d</span><span class="p">,</span><span class="w"> </span><span class="n">stateVector</span><span class="p">,</span><span class="w"> </span><span class="n">numStates</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">)).</span><span class="n">wait</span><span class="p">();</span>
+</span><span id="__span-14-48"><a id="__codelineno-14-48" name="__codelineno-14-48"></a>
+</span><span id="__span-14-49"><a id="__codelineno-14-49" name="__codelineno-14-49"></a>
+</span><span id="__span-14-50"><a id="__codelineno-14-50" name="__codelineno-14-50"></a><span class="w">       </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numQubits</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span id="__span-14-51"><a id="__codelineno-14-51" name="__codelineno-14-51"></a><span class="w">          </span><span class="n">h</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">stateVector_d</span><span class="p">,</span><span class="w"> </span><span class="n">numQubits</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+</span><span id="__span-14-52"><a id="__codelineno-14-52" name="__codelineno-14-52"></a><span class="w">       </span><span class="p">}</span>
+</span><span id="__span-14-53"><a id="__codelineno-14-53" name="__codelineno-14-53"></a>
+</span><span id="__span-14-54"><a id="__codelineno-14-54" name="__codelineno-14-54"></a><span class="w">       </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numQubits</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">){</span>
+</span><span id="__span-14-55"><a id="__codelineno-14-55" name="__codelineno-14-55"></a><span class="w">           </span><span class="k">if</span><span class="p">((</span><span class="n">hidden</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">j</span><span class="p">))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+</span><span id="__span-14-56"><a id="__codelineno-14-56" name="__codelineno-14-56"></a><span class="w">             </span><span class="n">z</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">stateVector_d</span><span class="p">,</span><span class="w"> </span><span class="n">numQubits</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-14-57"><a id="__codelineno-14-57" name="__codelineno-14-57"></a><span class="w">           </span><span class="p">}</span>
+</span><span id="__span-14-58"><a id="__codelineno-14-58" name="__codelineno-14-58"></a>
+</span><span id="__span-14-59"><a id="__codelineno-14-59" name="__codelineno-14-59"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-14-60"><a id="__codelineno-14-60" name="__codelineno-14-60"></a>
+</span><span id="__span-14-61"><a id="__codelineno-14-61" name="__codelineno-14-61"></a><span class="w">       </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numQubits</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span id="__span-14-62"><a id="__codelineno-14-62" name="__codelineno-14-62"></a><span class="w">          </span><span class="n">h</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">stateVector_d</span><span class="p">,</span><span class="w"> </span><span class="n">numQubits</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+</span><span id="__span-14-63"><a id="__codelineno-14-63" name="__codelineno-14-63"></a><span class="w">       </span><span class="p">}</span>
+</span><span id="__span-14-64"><a id="__codelineno-14-64" name="__codelineno-14-64"></a>
+</span><span id="__span-14-65"><a id="__codelineno-14-65" name="__codelineno-14-65"></a><span class="w">       </span><span class="n">measure</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">stateVector_d</span><span class="p">,</span><span class="w"> </span><span class="n">numQubits</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+</span><span id="__span-14-66"><a id="__codelineno-14-66" name="__codelineno-14-66"></a>
+</span><span id="__span-14-67"><a id="__codelineno-14-67" name="__codelineno-14-67"></a><span class="w">    </span><span class="n">sycl</span><span class="o">::</span><span class="n">free</span><span class="p">(</span><span class="n">stateVector_d</span><span class="p">,</span><span class="n">queue</span><span class="p">);</span>
+</span><span id="__span-14-68"><a id="__codelineno-14-68" name="__codelineno-14-68"></a><span class="w">    </span><span class="p">}</span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">exception</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-69"><a id="__codelineno-14-69" name="__codelineno-14-69"></a><span class="w">    </span><span class="c1">// Catches exceptions in the host code.</span>
+</span><span id="__span-14-70"><a id="__codelineno-14-70" name="__codelineno-14-70"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Caught a SYCL host exception:</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-14-71"><a id="__codelineno-14-71" name="__codelineno-14-71"></a>
+</span><span id="__span-14-72"><a id="__codelineno-14-72" name="__codelineno-14-72"></a><span class="w">    </span><span class="c1">// Most likely the runtime couldn&#39;t find FPGA hardware!</span>
+</span><span id="__span-14-73"><a id="__codelineno-14-73" name="__codelineno-14-73"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">code</span><span class="p">().</span><span class="n">value</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CL_DEVICE_NOT_FOUND</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-74"><a id="__codelineno-14-74" name="__codelineno-14-74"></a><span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;If you are targeting an FPGA, please ensure that your &quot;</span>
+</span><span id="__span-14-75"><a id="__codelineno-14-75" name="__codelineno-14-75"></a><span class="w">                   </span><span class="s">&quot;system has a correctly configured FPGA board.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-14-76"><a id="__codelineno-14-76" name="__codelineno-14-76"></a><span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Run sys_check in the oneAPI root directory to verify.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-14-77"><a id="__codelineno-14-77" name="__codelineno-14-77"></a><span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;If you are targeting the FPGA emulator, compile with &quot;</span>
+</span><span id="__span-14-78"><a id="__codelineno-14-78" name="__codelineno-14-78"></a><span class="w">                   </span><span class="s">&quot;-DFPGA_EMULATOR.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-14-79"><a id="__codelineno-14-79" name="__codelineno-14-79"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-14-80"><a id="__codelineno-14-80" name="__codelineno-14-80"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">terminate</span><span class="p">();</span>
+</span><span id="__span-14-81"><a id="__codelineno-14-81" name="__codelineno-14-81"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-14-82"><a id="__codelineno-14-82" name="__codelineno-14-82"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">passed</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">EXIT_FAILURE</span><span class="p">;</span>
+</span><span id="__span-14-83"><a id="__codelineno-14-83" name="__codelineno-14-83"></a>
+</span><span id="__span-14-84"><a id="__codelineno-14-84" name="__codelineno-14-84"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-bash highlight"><span class="filename">Building and testing</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>mkdir<span class="w"> </span>build-BV<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build-BV
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>cmake<span class="w"> </span>-DBUILD<span class="o">=</span>BV<span class="w"> </span>..
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>make<span class="w"> </span>fpga
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="si">${</span><span class="nv">JEMALLOC_PRELOAD</span><span class="si">}</span><span class="w"> </span>./quantum.fpga
 </span></code></pre></div>
-</div>
-<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-16-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-16-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-16-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-16-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-16-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-16-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-16-10">10</a></span>
-<span class="normal"><a href="#__codelineno-16-11">11</a></span>
-<span class="normal"><a href="#__codelineno-16-12">12</a></span>
-<span class="normal"><a href="#__codelineno-16-13">13</a></span>
-<span class="normal"><a href="#__codelineno-16-14">14</a></span>
-<span class="normal"><a href="#__codelineno-16-15">15</a></span>
-<span class="normal"><a href="#__codelineno-16-16">16</a></span>
-<span class="normal"><a href="#__codelineno-16-17">17</a></span>
-<span class="normal"><a href="#__codelineno-16-18">18</a></span>
-<span class="normal"><a href="#__codelineno-16-19">19</a></span>
-<span class="normal"><a href="#__codelineno-16-20">20</a></span>
-<span class="normal"><a href="#__codelineno-16-21">21</a></span>
-<span class="normal"><a href="#__codelineno-16-22">22</a></span>
-<span class="normal"><a href="#__codelineno-16-23">23</a></span>
-<span class="normal"><a href="#__codelineno-16-24">24</a></span>
-<span class="normal"><a href="#__codelineno-16-25">25</a></span>
-<span class="normal"><a href="#__codelineno-16-26">26</a></span>
-<span class="normal"><a href="#__codelineno-16-27">27</a></span>
-<span class="normal"><a href="#__codelineno-16-28">28</a></span>
-<span class="normal"><a href="#__codelineno-16-29">29</a></span>
-<span class="normal"><a href="#__codelineno-16-30">30</a></span>
-<span class="normal"><a href="#__codelineno-16-31">31</a></span>
-<span class="normal"><a href="#__codelineno-16-32">32</a></span>
-<span class="normal"><a href="#__codelineno-16-33">33</a></span>
-<span class="normal"><a href="#__codelineno-16-34">34</a></span>
-<span class="normal"><a href="#__codelineno-16-35">35</a></span>
-<span class="normal"><a href="#__codelineno-16-36">36</a></span>
-<span class="normal"><a href="#__codelineno-16-37">37</a></span>
-<span class="normal"><a href="#__codelineno-16-38">38</a></span>
-<span class="normal"><a href="#__codelineno-16-39">39</a></span>
-<span class="normal"><a href="#__codelineno-16-40">40</a></span>
-<span class="normal"><a href="#__codelineno-16-41">41</a></span>
-<span class="normal"><a href="#__codelineno-16-42">42</a></span>
-<span class="normal"><a href="#__codelineno-16-43">43</a></span>
-<span class="normal"><a href="#__codelineno-16-44">44</a></span>
-<span class="normal"><a href="#__codelineno-16-45">45</a></span>
-<span class="normal"><a href="#__codelineno-16-46">46</a></span>
-<span class="normal"><a href="#__codelineno-16-47">47</a></span>
-<span class="normal"><a href="#__codelineno-16-48">48</a></span>
-<span class="normal"><a href="#__codelineno-16-49">49</a></span>
-<span class="normal"><a href="#__codelineno-16-50">50</a></span>
-<span class="normal"><a href="#__codelineno-16-51">51</a></span>
-<span class="normal"><a href="#__codelineno-16-52">52</a></span>
-<span class="normal"><a href="#__codelineno-16-53">53</a></span>
-<span class="normal"><a href="#__codelineno-16-54">54</a></span>
-<span class="normal"><a href="#__codelineno-16-55">55</a></span>
-<span class="normal"><a href="#__codelineno-16-56">56</a></span>
-<span class="normal"><a href="#__codelineno-16-57">57</a></span>
-<span class="normal"><a href="#__codelineno-16-58">58</a></span>
-<span class="normal"><a href="#__codelineno-16-59">59</a></span>
-<span class="normal"><a href="#__codelineno-16-60">60</a></span>
-<span class="normal"><a href="#__codelineno-16-61">61</a></span>
-<span class="normal"><a href="#__codelineno-16-62">62</a></span>
-<span class="normal"><a href="#__codelineno-16-63">63</a></span>
-<span class="normal"><a href="#__codelineno-16-64">64</a></span>
-<span class="normal"><a href="#__codelineno-16-65">65</a></span>
-<span class="normal"><a href="#__codelineno-16-66">66</a></span>
-<span class="normal"><a href="#__codelineno-16-67">67</a></span>
-<span class="normal"><a href="#__codelineno-16-68">68</a></span>
-<span class="normal"><a href="#__codelineno-16-69">69</a></span>
-<span class="normal"><a href="#__codelineno-16-70">70</a></span>
-<span class="normal"><a href="#__codelineno-16-71">71</a></span>
-<span class="normal"><a href="#__codelineno-16-72">72</a></span>
-<span class="normal"><a href="#__codelineno-16-73">73</a></span>
-<span class="normal"><a href="#__codelineno-16-74">74</a></span>
-<span class="normal"><a href="#__codelineno-16-75">75</a></span>
-<span class="normal"><a href="#__codelineno-16-76">76</a></span>
-<span class="normal"><a href="#__codelineno-16-77">77</a></span>
-<span class="normal"><a href="#__codelineno-16-78">78</a></span>
-<span class="normal"><a href="#__codelineno-16-79">79</a></span>
-<span class="normal"><a href="#__codelineno-16-80">80</a></span>
-<span class="normal"><a href="#__codelineno-16-81">81</a></span>
-<span class="normal"><a href="#__codelineno-16-82">82</a></span>
-<span class="normal"><a href="#__codelineno-16-83">83</a></span>
-<span class="normal"><a href="#__codelineno-16-84">84</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="c1">// Sample code Bernstein-Vazirani</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="c1">// oneAPI headers</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sycl/ext/intel/fpga_extensions.hpp&gt;</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sycl/sycl.hpp&gt;</span>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
-</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;kernels.hpp&quot;</span>
-</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9"></a>
-</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">sycl</span><span class="p">;</span>
-</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11"></a>
-</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12"></a>
-</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14"></a>
-</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">passed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16"></a><span class="w">    </span><span class="k">try</span><span class="p">{</span>
-</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17"></a>
-</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18"></a><span class="w">       </span><span class="cp">#if FPGA_SIMULATOR</span>
-</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19"></a><span class="w">           </span><span class="k">auto</span><span class="w"> </span><span class="n">selector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sycl</span><span class="o">::</span><span class="n">ext</span><span class="o">::</span><span class="n">intel</span><span class="o">::</span><span class="n">fpga_simulator_selector_v</span><span class="p">;</span>
-</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20"></a><span class="w">       </span><span class="cp">#elif FPGA_HARDWARE</span>
-</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21"></a><span class="w">           </span><span class="k">auto</span><span class="w"> </span><span class="n">selector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sycl</span><span class="o">::</span><span class="n">ext</span><span class="o">::</span><span class="n">intel</span><span class="o">::</span><span class="n">fpga_selector_v</span><span class="p">;</span>
-</span><span id="__span-16-22"><a id="__codelineno-16-22" name="__codelineno-16-22"></a><span class="w">       </span><span class="cp">#else  </span><span class="c1">// #if FPGA_EMULATOR</span>
-</span><span id="__span-16-23"><a id="__codelineno-16-23" name="__codelineno-16-23"></a><span class="w">           </span><span class="k">auto</span><span class="w"> </span><span class="n">selector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sycl</span><span class="o">::</span><span class="n">ext</span><span class="o">::</span><span class="n">intel</span><span class="o">::</span><span class="n">fpga_emulator_selector_v</span><span class="p">;</span>
-</span><span id="__span-16-24"><a id="__codelineno-16-24" name="__codelineno-16-24"></a><span class="w">       </span><span class="cp">#endif</span>
-</span><span id="__span-16-25"><a id="__codelineno-16-25" name="__codelineno-16-25"></a>
-</span><span id="__span-16-26"><a id="__codelineno-16-26" name="__codelineno-16-26"></a><span class="w">       </span><span class="c1">// Create a SYCL queue</span>
-</span><span id="__span-16-27"><a id="__codelineno-16-27" name="__codelineno-16-27"></a><span class="w">       </span><span class="n">queue</span><span class="w"> </span><span class="n">queue</span><span class="p">(</span><span class="n">selector</span><span class="p">);</span>
-</span><span id="__span-16-28"><a id="__codelineno-16-28" name="__codelineno-16-28"></a><span class="w">       </span><span class="c1">// make sure the device supports USM host allocations</span>
-</span><span id="__span-16-29"><a id="__codelineno-16-29" name="__codelineno-16-29"></a><span class="w">       </span><span class="k">auto</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queue</span><span class="p">.</span><span class="n">get_device</span><span class="p">();</span>
-</span><span id="__span-16-30"><a id="__codelineno-16-30" name="__codelineno-16-30"></a>
-</span><span id="__span-16-31"><a id="__codelineno-16-31" name="__codelineno-16-31"></a><span class="w">       </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Running on device: &quot;</span>
-</span><span id="__span-16-32"><a id="__codelineno-16-32" name="__codelineno-16-32"></a><span class="w">                 </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">device</span><span class="p">.</span><span class="n">get_info</span><span class="o">&lt;</span><span class="n">sycl</span><span class="o">::</span><span class="n">info</span><span class="o">::</span><span class="n">device</span><span class="o">::</span><span class="n">name</span><span class="o">&gt;</span><span class="p">().</span><span class="n">c_str</span><span class="p">()</span>
-</span><span id="__span-16-33"><a id="__codelineno-16-33" name="__codelineno-16-33"></a><span class="w">                 </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-</span><span id="__span-16-34"><a id="__codelineno-16-34" name="__codelineno-16-34"></a>
-</span><span id="__span-16-35"><a id="__codelineno-16-35" name="__codelineno-16-35"></a>
-</span><span id="__span-16-36"><a id="__codelineno-16-36" name="__codelineno-16-36"></a>
-</span><span id="__span-16-37"><a id="__codelineno-16-37" name="__codelineno-16-37"></a><span class="w">       </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">numQubits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
-</span><span id="__span-16-38"><a id="__codelineno-16-38" name="__codelineno-16-38"></a><span class="w">       </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">numStates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">numQubits</span><span class="p">;</span><span class="w"> </span><span class="c1">// 2^n</span>
-</span><span id="__span-16-39"><a id="__codelineno-16-39" name="__codelineno-16-39"></a>
-</span><span id="__span-16-40"><a id="__codelineno-16-40" name="__codelineno-16-40"></a><span class="w">       </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">hidden</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">101</span><span class="p">;</span><span class="w"> </span><span class="c1">//Hidden integer (1100101)</span>
-</span><span id="__span-16-41"><a id="__codelineno-16-41" name="__codelineno-16-41"></a>
-</span><span id="__span-16-42"><a id="__codelineno-16-42" name="__codelineno-16-42"></a><span class="w">       </span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">stateVector</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">[</span><span class="n">numStates</span><span class="p">];</span>
-</span><span id="__span-16-43"><a id="__codelineno-16-43" name="__codelineno-16-43"></a><span class="w">       </span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">stateVector_d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc_device</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">numStates</span><span class="p">,</span><span class="n">queue</span><span class="p">);</span>
-</span><span id="__span-16-44"><a id="__codelineno-16-44" name="__codelineno-16-44"></a>
-</span><span id="__span-16-45"><a id="__codelineno-16-45" name="__codelineno-16-45"></a><span class="w">       </span><span class="c1">// Initial state |00...00&gt;</span>
-</span><span id="__span-16-46"><a id="__codelineno-16-46" name="__codelineno-16-46"></a><span class="w">       </span><span class="n">stateVector</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">1.0f</span><span class="p">,</span><span class="mf">0.0f</span><span class="p">);</span>
-</span><span id="__span-16-47"><a id="__codelineno-16-47" name="__codelineno-16-47"></a><span class="w">       </span><span class="n">queue</span><span class="p">.</span><span class="n">memcpy</span><span class="p">(</span><span class="n">stateVector_d</span><span class="p">,</span><span class="w"> </span><span class="n">stateVector</span><span class="p">,</span><span class="w"> </span><span class="n">numStates</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">)).</span><span class="n">wait</span><span class="p">();</span>
-</span><span id="__span-16-48"><a id="__codelineno-16-48" name="__codelineno-16-48"></a>
-</span><span id="__span-16-49"><a id="__codelineno-16-49" name="__codelineno-16-49"></a>
-</span><span id="__span-16-50"><a id="__codelineno-16-50" name="__codelineno-16-50"></a><span class="w">       </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numQubits</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-</span><span id="__span-16-51"><a id="__codelineno-16-51" name="__codelineno-16-51"></a><span class="w">          </span><span class="n">h</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">stateVector_d</span><span class="p">,</span><span class="w"> </span><span class="n">numQubits</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
-</span><span id="__span-16-52"><a id="__codelineno-16-52" name="__codelineno-16-52"></a><span class="w">       </span><span class="p">}</span>
-</span><span id="__span-16-53"><a id="__codelineno-16-53" name="__codelineno-16-53"></a>
-</span><span id="__span-16-54"><a id="__codelineno-16-54" name="__codelineno-16-54"></a><span class="w">       </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numQubits</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">){</span>
-</span><span id="__span-16-55"><a id="__codelineno-16-55" name="__codelineno-16-55"></a><span class="w">           </span><span class="k">if</span><span class="p">((</span><span class="n">hidden</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">j</span><span class="p">))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
-</span><span id="__span-16-56"><a id="__codelineno-16-56" name="__codelineno-16-56"></a><span class="w">             </span><span class="n">z</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">stateVector_d</span><span class="p">,</span><span class="w"> </span><span class="n">numQubits</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">);</span><span class="w"> </span>
-</span><span id="__span-16-57"><a id="__codelineno-16-57" name="__codelineno-16-57"></a><span class="w">           </span><span class="p">}</span>
-</span><span id="__span-16-58"><a id="__codelineno-16-58" name="__codelineno-16-58"></a>
-</span><span id="__span-16-59"><a id="__codelineno-16-59" name="__codelineno-16-59"></a><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-16-60"><a id="__codelineno-16-60" name="__codelineno-16-60"></a>
-</span><span id="__span-16-61"><a id="__codelineno-16-61" name="__codelineno-16-61"></a><span class="w">       </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numQubits</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-</span><span id="__span-16-62"><a id="__codelineno-16-62" name="__codelineno-16-62"></a><span class="w">          </span><span class="n">h</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">stateVector_d</span><span class="p">,</span><span class="w"> </span><span class="n">numQubits</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
-</span><span id="__span-16-63"><a id="__codelineno-16-63" name="__codelineno-16-63"></a><span class="w">       </span><span class="p">}</span>
-</span><span id="__span-16-64"><a id="__codelineno-16-64" name="__codelineno-16-64"></a>
-</span><span id="__span-16-65"><a id="__codelineno-16-65" name="__codelineno-16-65"></a><span class="w">       </span><span class="n">measure</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">stateVector_d</span><span class="p">,</span><span class="w"> </span><span class="n">numQubits</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
-</span><span id="__span-16-66"><a id="__codelineno-16-66" name="__codelineno-16-66"></a>
-</span><span id="__span-16-67"><a id="__codelineno-16-67" name="__codelineno-16-67"></a><span class="w">    </span><span class="n">sycl</span><span class="o">::</span><span class="n">free</span><span class="p">(</span><span class="n">stateVector_d</span><span class="p">,</span><span class="n">queue</span><span class="p">);</span>
-</span><span id="__span-16-68"><a id="__codelineno-16-68" name="__codelineno-16-68"></a><span class="w">    </span><span class="p">}</span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">exception</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-16-69"><a id="__codelineno-16-69" name="__codelineno-16-69"></a><span class="w">    </span><span class="c1">// Catches exceptions in the host code.</span>
-</span><span id="__span-16-70"><a id="__codelineno-16-70" name="__codelineno-16-70"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Caught a SYCL host exception:</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-</span><span id="__span-16-71"><a id="__codelineno-16-71" name="__codelineno-16-71"></a>
-</span><span id="__span-16-72"><a id="__codelineno-16-72" name="__codelineno-16-72"></a><span class="w">    </span><span class="c1">// Most likely the runtime couldn&#39;t find FPGA hardware!</span>
-</span><span id="__span-16-73"><a id="__codelineno-16-73" name="__codelineno-16-73"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">code</span><span class="p">().</span><span class="n">value</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CL_DEVICE_NOT_FOUND</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-16-74"><a id="__codelineno-16-74" name="__codelineno-16-74"></a><span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;If you are targeting an FPGA, please ensure that your &quot;</span>
-</span><span id="__span-16-75"><a id="__codelineno-16-75" name="__codelineno-16-75"></a><span class="w">                   </span><span class="s">&quot;system has a correctly configured FPGA board.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-</span><span id="__span-16-76"><a id="__codelineno-16-76" name="__codelineno-16-76"></a><span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Run sys_check in the oneAPI root directory to verify.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-</span><span id="__span-16-77"><a id="__codelineno-16-77" name="__codelineno-16-77"></a><span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;If you are targeting the FPGA emulator, compile with &quot;</span>
-</span><span id="__span-16-78"><a id="__codelineno-16-78" name="__codelineno-16-78"></a><span class="w">                   </span><span class="s">&quot;-DFPGA_EMULATOR.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-</span><span id="__span-16-79"><a id="__codelineno-16-79" name="__codelineno-16-79"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-16-80"><a id="__codelineno-16-80" name="__codelineno-16-80"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">terminate</span><span class="p">();</span>
-</span><span id="__span-16-81"><a id="__codelineno-16-81" name="__codelineno-16-81"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-16-82"><a id="__codelineno-16-82" name="__codelineno-16-82"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">passed</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">EXIT_FAILURE</span><span class="p">;</span>
-</span><span id="__span-16-83"><a id="__codelineno-16-83" name="__codelineno-16-83"></a>
-</span><span id="__span-16-84"><a id="__codelineno-16-84" name="__codelineno-16-84"></a><span class="p">}</span>
-</span></code></pre></div></td></tr></table></div>
-<div class="admonition info">
-<p class="admonition-title">Building and the code</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>mkdir<span class="w"> </span>build-fpga<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build-fpga
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>cmake<span class="w"> </span>..
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>make<span class="w"> </span>fpga
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="si">${</span><span class="nv">JEMALLOC_PRELOAD</span><span class="si">}</span><span class="w"> </span>./quantum.fpga
-</span></code></pre></div>
-</div>
-</div>
-<div class="tabbed-block">
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>
-</span></code></pre></div>
-</div>
-</div>
-</div>
 </div>
 
 
@@ -1767,7 +1697,7 @@ I \otimes U \otimes I|\psi_1 \psi_2 \psi_3 \rangle &amp; =  |\psi_1 \rangle &amp
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 15, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 18, 2024</span>
   </span>
 
     

@@ -1,5 +1,5 @@
-- We will develop the quantum circuit we have seen previously, i.e.,  Bernstein-Varizani to search an hidden element
-- We will need to code the Pauli H and Z gates 
+- We will develop a simple and famous quantum circuit, i.e., Bernstein-Varizani to search an hidden element
+- We will need the two Pauli H and Z gates 
 - We will also need a function to measure (sample) from the distribution obtained using the state vector amplitudes
 
 ## Setup
@@ -97,7 +97,7 @@ $>tree -L 2
 
 - We are not going to modify this code but we will use it to create the two required gates
 
-```cpp title="kernels.cpp" linenums="1" hl_lines="34 35 36 37 38 39 40 61 62 63"
+```cpp title="kernels.cpp" linenums="1" hl_lines="34 35 36 37 38 39 40 61 62 63 64"
 --8<-- "./code/FQSim/src/kernels.cpp"
 ```
 
@@ -265,139 +265,107 @@ queue.parallel_for<class Proba>(sycl::range<1>(numStates),[=]( sycl::item<1> ite
 - In simulation, measuring is a synonym of **sampling** 
 
 !!! tig "Sampling the possible outcomes"
-    === "Question"
-        - Using the `#!cpp void get_proba(...)` function, fill the body of the `#!cpp void measure(...)` function
-        - You can use the standard library function `#!cpp std::discrete_distribution` (see below)
-        ```cpp 
-        std::random_device rd;                          // Obtain a random number from hardware
-        std::mt19937 gen(rd());                         // Seed the generator
-        std::discrete_distribution<> dist(probaVector, probaVector + size);
-        ```
-
-    === "Solution"
-        - Add the following code in the `#!cpp void measure(...)` function body
-        ```cpp linenums="1"
-         int size = std::pow(2,numQubits);
-         float *probaVector = new float[size];
-         float *probaVector_d = malloc_device<float>(size,queue);
-         get_proba(queue,stateVector_d,size,probaVector_d); 
-         queue.memcpy(probaVector, probaVector_d, size * sizeof(float)).wait();
-         std::random_device rd;                          // Obtain a random number from hardware
-         std::mt19937 gen(rd());                         // Seed the generator
-         std::discrete_distribution<> dist(probaVector, probaVector + size);
-         std::vector<int> arr(size);
-         for(int i = 0; i < samples; i++){
-             int index = dist(gen);
-             arr[index]++;
-         }
-         std::cout << "Quantum State Probabilities:" << std::endl;
-         for (size_t i = 0; i < size; ++i) {
-             std::cout << "State " <<toBinary(i,numQubits) << ": " << arr[i] << std::endl;
-         }
-         delete[] probaVector;
-        ```
+    - Using the `#!cpp void get_proba(...)` function, fill the body of the `#!cpp void measure(...)` function
+    - We can use the standard library function `#!cpp std::discrete_distribution` (see below)
+    - Add the following code in the `#!cpp void measure(...)` function body
+    ```cpp linenums="1"
+     int size = std::pow(2,numQubits);
+     float *probaVector = new float[size];
+     float *probaVector_d = malloc_device<float>(size,queue);
+     get_proba(queue,stateVector_d,size,probaVector_d); 
+     queue.memcpy(probaVector, probaVector_d, size * sizeof(float)).wait();
+     std::random_device rd;                          // Obtain a random number from hardware
+     std::mt19937 gen(rd());                         // Seed the generator
+     std::discrete_distribution<> dist(probaVector, probaVector + size);
+     std::vector<int> arr(size);
+     for(int i = 0; i < samples; i++){
+         int index = dist(gen);
+         arr[index]++;
+     }
+     std::cout << "Quantum State Probabilities:" << std::endl;
+     for (size_t i = 0; i < size; ++i) {
+         std::cout << "State " <<toBinary(i,numQubits) << ": " << arr[i] << std::endl;
+     }
+     delete[] probaVector;
+    ```
 
 ## Implementing the two Pauli H and Z gates
 
 !!! tig "Pauli H gate"
-    === "Question"
-        - The Hadamard gate puts qubits in **superposition**
-        - It transform the basis state:
-            - $|0 \rangle$ to $\frac{|0\rangle + |1 \rangle}{\sqrt{2}} $
-            - $|1 \rangle$ to $\frac{|0\rangle - |1 \rangle}{\sqrt{2}} $
+    - The Hadamard gate puts qubits in **superposition**
+    - It transform the basis state:
+        - $|0 \rangle$ to $\frac{|0\rangle + |1 \rangle}{\sqrt{2}} $
+        - $|1 \rangle$ to $\frac{|0\rangle - |1 \rangle}{\sqrt{2}} $
 
-        <div align="center"> $\begin{aligned} H & = \frac{1}{\sqrt{2}}\begin{pmatrix}1 & 1 \\1 & -1 \end{pmatrix}\end{aligned}$ </div>
+    <div align="center"> $\begin{aligned} H & = \frac{1}{\sqrt{2}}\begin{pmatrix}1 & 1 \\1 & -1 \end{pmatrix}\end{aligned}$ </div>
 
-        - Fill the body of the `#!cpp void h(...)` function body
-
-        - To test your gate, set the variable `SOURCE_FILES` as follows `set(SOURCE_FILES src/test_h_gate.cpp src/kernels.cpp)` in the CMakeLists.txt file
-        !!! info "Building and the code"  
-            ```bash
-            mkdir build-test-h-gate && cd build-test-h-gate
-            cmake ..
-            make fpga
-            LD_PRELOAD=${JEMALLOC_PRELOAD} ./quantum.fpga
-            ```
-
-    === "Solution"
-        - Add the following code in the `#!cpp void h(...)` function body
-        ```cpp linenums="1"
-        std::complex<float> A (1.0f,0.0f);
-        std::complex<float> B (1.0f,0.0f);
-        std::complex<float> C (1.0f,0.0f);
-        std::complex<float> D (-1.0f,0.0f);
-        apply_gate(queue,stateVector_d,std::pow(2,numQubits)/2,target,A/std::sqrt(2.0f),
-                                                                  B/std::sqrt(2.0f),
-                                                                  C/std::sqrt(2.0f),
-                                                                  D/std::sqrt(2.0f));
-        ```
+    - We add the following code in the `#!cpp void h(...)` function body
+    ```cpp linenums="1"
+    std::complex<float> A (1.0f,0.0f);
+    std::complex<float> B (1.0f,0.0f);
+    std::complex<float> C (1.0f,0.0f);
+    std::complex<float> D (-1.0f,0.0f);
+    apply_gate(queue,stateVector_d,std::pow(2,numQubits)/2,target,A/std::sqrt(2.0f),
+                                                              B/std::sqrt(2.0f),
+                                                              C/std::sqrt(2.0f),
+                                                              D/std::sqrt(2.0f));
+    ```
+    ```bash title="Building and testing"
+    mkdir build-BV && cd build-BV
+    cmake -DBUILD=H ..
+    make fpga
+    LD_PRELOAD=${JEMALLOC_PRELOAD} ./quantum.fpga
+    ```
 
 !!! tig "Pauli Z gate"
-    === "Description"
-         The Pauli-Z gate is a single-qubit rotation through $\pi$ radians around the z-axis.
-        <div align="center"> $\begin{aligned} Z & = \begin{pmatrix}1 & 0 \\0 & -1 \end{pmatrix}\end{aligned}$ </div>
+     The Pauli-Z gate is a single-qubit rotation through $\pi$ radians around the z-axis.
+    <div align="center"> $\begin{aligned} Z & = \begin{pmatrix}1 & 0 \\0 & -1 \end{pmatrix}\end{aligned}$ </div>
 
-        - Fill the body of the `#!cpp void z(...)` function body
 
-        - To test your gate, set the variable `SOURCE_FILES` as follows `set(SOURCE_FILES src/test_z_gate.cpp src/kernels.cpp)` in the CMakeLists.txt file
-        !!! info "Building and the code"  
-            ```bash
-            mkdir build-test-z-gate && cd build-test-z-gate
-            cmake ..
-            make fpga
-            LD_PRELOAD=${JEMALLOC_PRELOAD} ./quantum.fpga
-            ```
-
-    === "Solution"
-        - Add the following code in the `#!cpp void z(...)` function body
-        ```cpp linenums="1"
-        std::complex<float> A (1.0f,0.0f);
-        std::complex<float> B (0.0f,0.0f);
-        std::complex<float> C (0.0f,0.0f);
-        std::complex<float> D (-1.0f,0.0f);
-        apply_gate(queue,stateVector_d,std::pow(2,numQubits)/2,target,A,
+    - We add the following code in the `#!cpp void z(...)` function body
+    ```cpp linenums="1"
+    std::complex<float> A (1.0f,0.0f);
+    std::complex<float> B (0.0f,0.0f);
+    std::complex<float> C (0.0f,0.0f);
+    std::complex<float> D (-1.0f,0.0f);
+    apply_gate(queue,stateVector_d,std::pow(2,numQubits)/2,target,A,
                                                                 B,
                                                                 C,
                                                                 D);
-        ```
+    ```
+    ```bash title="Building and testing"
+    mkdir build-BV && cd build-BV
+    cmake -DBUILD=Z ..
+    make fpga
+    LD_PRELOAD=${JEMALLOC_PRELOAD} ./quantum.fpga
+    ```
 
 ## Implementing the Bernstein-Varizani algorithm
 
 
-!!! tig "Let's put everything together"
-    === "Question"
+- Let's put everything together:
 
-        - Fill the body of the `#!cpp int main(...)` function body
+  -  Fill the body of the `#!cpp int main(...)` function body
 
-        - Apply the h gate to all qubits to put them all into superpositions
+  - Apply the h gate to all qubits to put them all into superpositions
 
-        - Apply the z gate to the register qubits corresponding to the classical bits matching the so called hidden number
+  - Apply the z gate to the register qubits corresponding to the classical bits matching the so called hidden number
 
-        - Finally, sample from the probabilities using the `#!cpp void measure(...)`
+  - Finally, sample from the probabilities using the `#!cpp void measure(...)`
 
-        !!! info "Building and the code"  
-            ```bash
-            mkdir build-BV && cd build-BV
-            cmake ..
-            make fpga
-            LD_PRELOAD=${JEMALLOC_PRELOAD} ./quantum.fpga
-            ```
+!!! info " Implemetation of the SYCL version of Bernstein-Vazirani"  
+    ```cpp linenums="1"
+    --8<-- "./code/FQSim/src/bernstein-vazirani.cpp"
+    ```
 
-        ```cpp linenums="1"
-        --8<-- "./code/FQSim/src/bernstein-vazirani.cpp"
-        ```
-        !!! info "Building and the code"  
-            ```bash
-            mkdir build-fpga && cd build-fpga
-            cmake ..
-            make fpga
-            LD_PRELOAD=${JEMALLOC_PRELOAD} ./quantum.fpga
-            ```
+    ```bash title="Building and testing"
+    mkdir build-BV && cd build-BV
+    cmake -DBUILD=BV ..
+    make fpga
+    LD_PRELOAD=${JEMALLOC_PRELOAD} ./quantum.fpga
+    ```
 
-    === "Solution"
-        ```cpp 
-        --8<-- "./code/FQSim/src-solution/bernstein-vazirani.cpp"
-        ```
+
 
 
 
