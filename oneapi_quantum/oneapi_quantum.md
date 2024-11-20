@@ -354,10 +354,12 @@ You are given a black box function (oracle) that computes:
 - The dot product $a \\cdot x $ is calculated as $ (a_1x_1 + a_2x_2 + \\dots + a_nx_n) $ modulo 2.
 - **Goal**: Determine the hidden string $a $ using the fewest number of queries to $f$.
 
-### Quantum Solution,
+### Quantum Solution
+
 The Bernstein-Vazirani algorithm uses a quantum computer to identify $a$ with a single query, showing an exponential improvement in query complexity.
-,
-### Steps of the Algorithm:,
+
+### Steps of the Algorithm
+
 1. **Initialization**: Start with $ n $ qubits in the state $ |0\\rangle $ and one auxiliary qubit in the state $|1\\rangle $.
 2. **Apply Hadamard Gates**: Apply Hadamard gates to all qubits, transforming each $ |0\rangle $to $ \frac{|0\\rangle + |1\rangle}{\sqrt{2}} $ and $ |1\rangle $ to $\frac{|0\rangle - |1\rangle}{\sqrt{2}}$.
 3. **Query the Oracle**: The function $ f(x) $ modifies the auxiliary qubit by $ (-1)^{f(x)} $ using a Z gate, encoding the dot product $ a \\cdot x $ in the quantum state.
