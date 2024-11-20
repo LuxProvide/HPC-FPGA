@@ -90,16 +90,16 @@ Before targeting a specific hardware accelerator, you need to ensure that the SY
 !!! success "Output"
     ```bash
     [opencl:acc:0] Intel(R) FPGA Emulation Platform for OpenCL(TM), Intel(R) FPGA Emulation Device 1.2 [2023.15.3.0.20_160000]
-    [opencl:cpu:1] Intel(R) OpenCL, AMD EPYC 7452 32-Core Processor                 3.0 [2023.15.3.0.20_160000]
+    [opencl:cpu:1] Intel(R) OpenCL, AMD EPYC 7452 32-Core Processor                                3.0 [2023.15.3.0.20_160000]
     [opencl:acc:2] Intel(R) FPGA SDK for OpenCL(TM), p520_hpc_m210h_g3x16 : BittWare Stratix 10 MX OpenCL platform (aclbitt_s10mx_pcie0) 1.0 [2023.1]
     [opencl:acc:3] Intel(R) FPGA SDK for OpenCL(TM), p520_hpc_m210h_g3x16 : BittWare Stratix 10 MX OpenCL platform (aclbitt_s10mx_pcie1) 1.0 [2023.1]
     ```
 
-!!! warning
-    Only 20 FPGA nodes are available, which may not be sufficient for the number of participants. However, this is not an issue, as you can also opt to use a FPGA emulation on a non-FPGA node.
-    ```bash
+!!! note
+    Note that you can use FPGA emulation on a non-FPGA node !!!
+    ```bash title="Meluxina's CPU partition"
     [opencl:acc:0] Intel(R) FPGA Emulation Platform for OpenCL(TM), Intel(R) FPGA Emulation Device 1.2 [2023.15.3.0.20_160000]
-    [opencl:cpu:1] Intel(R) OpenCL, AMD EPYC 7H12 64-Core Processor                 3.0 [2023.15.3.0.20_160000]
+    [opencl:cpu:1] Intel(R) OpenCL, AMD EPYC 7H12 64-Core Processor                                3.0 [2023.15.3.0.20_160000]
     ```
 
 

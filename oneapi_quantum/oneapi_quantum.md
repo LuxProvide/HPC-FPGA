@@ -342,18 +342,89 @@ queue.parallel_for<class Proba>(sycl::range<1>(numStates),[=]( sycl::item<1> ite
 
 ## Implementing the Bernstein-Varizani algorithm
 
+The Bernstein-Vazirani algorithm is a quantum algorithm that highlights the superiority of quantum computers in solvingspecific problems more efficiently than classical computers. This algorithm solves the problem of determining a hiddenbinary string with minimal queries to a given function.
 
-- Let's put everything together:
+### Problem Setup
 
-  -  Fill the body of the `#!cpp int main(...)` function body
+You are given a black box function (oracle) that computes:
 
-  - Apply the h gate to all qubits to put them all into superpositions
+- **Function**: $ f(x) = a \\cdot x $
+- **a** is a hidden string of $ n $ bits.
+- **x** is an  $n$-bit string.
+- The dot product $a \\cdot x $ is calculated as $ (a_1x_1 + a_2x_2 + \\dots + a_nx_n) $ modulo 2.
+- **Goal**: Determine the hidden string $a $ using the fewest number of queries to $f$.
 
-  - Apply the z gate to the register qubits corresponding to the classical bits matching the so called hidden number
+### Quantum Solution,
+The Bernstein-Vazirani algorithm uses a quantum computer to identify $a$ with a single query, showing an exponential improvement in query complexity.
+,
+### Steps of the Algorithm:,
+1. **Initialization**: Start with $ n $ qubits in the state $ |0\\rangle $ and one auxiliary qubit in the state $|1\\rangle $.
+2. **Apply Hadamard Gates**: Apply Hadamard gates to all qubits, transforming each $ |0\rangle $to $ \frac{|0\\rangle + |1\rangle}{\sqrt{2}} $ and $ |1\rangle $ to $\frac{|0\rangle - |1\rangle}{\sqrt{2}}$.
+3. **Query the Oracle**: The function $ f(x) $ modifies the auxiliary qubit by $ (-1)^{f(x)} $ using a Z gate, encoding the dot product $ a \\cdot x $ in the quantum state.
+4. **Apply Hadamard Gates Again**: Applying Hadamard gates again to all qubits.
+5. **Measurement**: Measure the first $ n $ qubits to directly obtain $a $ in binary form.
 
-  - Finally, sample from the probabilities using the `#!cpp void measure(...)`
+<figure markdown>
+![](./images/BV_circuit.png)
+<caption>Circuit for a="01"</caption>     
+</figure>
 
-!!! info " Implemetation of the SYCL version of Bernstein-Vazirani"  
+
+!!! note "No CNOT gate"
+
+    === "Without CNOT"
+         * We do not have the CNOT gate.
+         * However, we can replace the previous circuit the following one:
+
+        ![](./images/BV_new.png)
+    === "Or implement it ?"
+        ```cpp
+        void apply_controlled_gate(sycl::queue &queue, std::complex<float> *stateVector_d,
+                          const unsigned int numStates,
+                          const int control,
+                          const int target,
+                          const std::complex<float> A,
+                          const std::complex<float> B,
+                          const std::complex<float> C,
+                          const std::complex<float> D)
+        {
+        
+          queue.parallel_for<class ControlledGate>(sycl::range<1>(numStates),[=]( sycl::item<1> item) {
+        	int global_id = item.get_id(0);
+        	const int zero_state = nth_cleared(global_id,target);
+        	const int one_state = zero_state | (1 << target);
+        	std::complex<float> zero_amp = stateVector_d[zero_state];
+        	std::complex<float> one_amp = stateVector_d[one_state];
+        
+        	if((zero_state & (1 << control)) > 0){
+        		stateVector_d[zero_state] = A * zero_amp + B * one_amp;
+        	}
+        	if((one_state & (1 << control)) > 0){
+        		stateVector_d[one_state] =  C * zero_amp + D * one_amp;
+        	}
+                 }).wait();
+        
+        }
+        
+        
+        void cnot_x(sycl::queue &queue, std::complex<float> *stateVector_d,
+        				  const unsigned int numQubits,
+                          const int control,
+                          const int target){
+        
+            std::complex<float> A (0.0f,0.0f);
+            std::complex<float> B (1.0f,0.0f);
+            std::complex<float> C (1.0f,0.0f);
+            std::complex<float> D (0.0f,0.0f);
+            apply_controlled_gate(queue,stateVector_d,std::pow(2,numQubits)/2,control,target,A,
+                                                                        B,
+                                                                        C,
+                                                                        D);
+        }
+        ```
+
+
+!!! info "Implemetation of the SYCL version of Bernstein-Vazirani"  
     ```cpp linenums="1"
     --8<-- "./code/FQSim/src/bernstein-vazirani.cpp"
     ```
