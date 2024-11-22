@@ -105,7 +105,7 @@ int main() {
               // of the matrix tile in local memory.
               tileA[i][j] = accessor_a[m][p*B+j];
               tileB[i][j] = accessor_b[p*B+i][n];
-              item.barrier();
+              sycl::group_barrier(item.get_group());
 
               // Perform computation using the local memory tile, and
               // matrix B in global memory.
@@ -115,7 +115,7 @@ int main() {
 
               // After computation, synchronize again, to ensure all
               // reads from the local memory tile are complete.
-              item.barrier();
+              sycl::group_barrier(item.get_group());
             }
 
             // Write the final result to global memory.
