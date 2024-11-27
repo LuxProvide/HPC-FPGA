@@ -73,7 +73,7 @@ FPGA Development Boards and HPC (High-Performance Computing) FPGA Cards serve di
         * **Programming languages**: <u>HLS</u>: C/C++, python --  <u>HDL</u>: VHDL, Verilog, System Verilog.
         * **Specifications**:
             - Logic Cells: 2,073,000 
-            - Block RAM: 239.5 Mb
+            - Block RAM: 239.5 MiB
             - External memory: 16GB HBM2
 
         ![](https://www.bittware.com/files/520N-MX-800px.svg)
